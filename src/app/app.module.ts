@@ -3,14 +3,37 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CourseComponent } from './course/course.component';
+import { HeaderComponent } from './header/header.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { MaterialModule } from 'src/material-module';
+import { NewCourseComponent } from './new-course/new-course.component';
+import { CourseListComponent } from './course-list/course-list.component';
+import { ReviewListComponent } from './review-list/review-list.component';
+import { ParametersComponent } from './parameters/parameters.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CourseComponent,
+    HeaderComponent,
+    DashboardComponent,
+    SidenavComponent,
+    NewCourseComponent,
+    CourseListComponent,
+    ReviewListComponent,
+    ParametersComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

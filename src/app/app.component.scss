@@ -1,0 +1,20 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
+/** {
+  font-family: 'Noto Sans Display', sans-serif;
+}
+ */
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer {
+  width: 260px;
+  background: #0f172a;
+}
+
+mat-drawer-container {
+  height: 100vh;
+}
