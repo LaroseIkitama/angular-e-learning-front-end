@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { ParametersComponent } from './parameters/parameters.component';
 import { ReviewListComponent } from './review-list/review-list.component';
+import { StepperCourseComponent } from './stepper-course/stepper-course.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'dashboard',pathMatch:'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'course-list', component:CourseListComponent},
   {path: 'review-list', component:ReviewListComponent},
   {path: 'parameters', component:ParametersComponent},
+  {path: 'stepper', component:StepperCourseComponent},
 ];
 
 @NgModule({

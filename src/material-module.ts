@@ -6,6 +6,11 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatTableModule } from '@angular/material/table';
+
+
 
 @NgModule({
   exports: [
@@ -14,7 +19,10 @@ import { MatListModule } from "@angular/material/list";
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatStepperModule,
+    MatTableModule
   ]
 })
 

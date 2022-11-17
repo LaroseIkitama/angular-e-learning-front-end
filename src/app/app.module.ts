@@ -14,6 +14,9 @@ import { NewCourseComponent } from './new-course/new-course.component';
 import { CourseListComponent } from './course-list/course-list.component';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { ParametersComponent } from './parameters/parameters.component';
+import { StepperCourseComponent } from './stepper-course/stepper-course.component';
+import {  FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { TableCourseComponent } from './table-course/table-course.component';
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { ParametersComponent } from './parameters/parameters.component';
     NewCourseComponent,
     CourseListComponent,
     ReviewListComponent,
-    ParametersComponent
+    ParametersComponent,
+    StepperCourseComponent,
+    TableCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,8 @@ import { ParametersComponent } from './parameters/parameters.component';
     BrowserAnimationsModule,
     MaterialModule,
     FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
