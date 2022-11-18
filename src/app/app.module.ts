@@ -17,6 +17,7 @@ import { ParametersComponent } from './parameters/parameters.component';
 import { StepperCourseComponent } from './stepper-course/stepper-course.component';
 import {  FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { TableCourseComponent } from './table-course/table-course.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { TableCourseComponent } from './table-course/table-course.component';
     MaterialModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
