@@ -1,0 +1,11 @@
+<div id="publish" [formGroup]="form">
+  <div class="form-group" formGroupName="publish">
+    <label for="">Title</label>
+    <input type="text" class="form-control" formControlName="title">
+  </div>
+  <div>
+    <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+    <button mat-raised-button color="primary" matStepperNext (click)="submit()">Next</button>
+  </div>
+</div>
+

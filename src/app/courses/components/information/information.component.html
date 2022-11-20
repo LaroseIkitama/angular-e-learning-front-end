@@ -1,0 +1,27 @@
+<div id="information" [formGroup]="form">
+  <div class="form-group" formGroupName="information">
+    <label for="">Title</label>
+    <input type="text" class="form-control" formControlName="title">
+  </div>
+  <div class="form-group" formGroupName="information">
+    <label for="">Description</label>
+    <textarea name="" id="" cols="20" rows="6" formControlName="description"></textarea>
+  </div>
+  <div class="form-group" formGroupName="information">
+    <label for="">Language</label>
+    <select name="" id="" formControlName="language">
+      <option *ngFor="let language of languages" [ngValue]="language">{{ language.name }}</option>
+    </select>
+    <label for="">Level</label>
+    <select name="" id="" formControlName="level">
+      <option *ngFor="let level of levels" [ngValue]="level">{{ level.name }}</option>
+    </select>
+    <label for="">Category</label>
+    <select name="" id="" formControlName="category">
+      <option *ngFor="let category of categories" [ngValue]="category.id">{{ category.name }}</option>
+    </select>
+  </div>
+  <div>
+    <button mat-raised-button color="primary" (click)="step1Submitted()" matStepperNext>Next</button>
+  </div>
+</div>
