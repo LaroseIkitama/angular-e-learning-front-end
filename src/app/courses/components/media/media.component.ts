@@ -9,10 +9,11 @@ import { FormGroup } from '@angular/forms';
 export class MediaComponent implements OnInit {
 
   constructor() { }
-
-@Input() form!:FormGroup
+  urlImage = "../../../../assets/images/img-icon-2.png";
+  @Input() form!: FormGroup
   ngOnInit(): void {
   }
+
 
   step3Submitted() {
     this.form.get('media')!.get('imageCourse')!.markAllAsTouched();

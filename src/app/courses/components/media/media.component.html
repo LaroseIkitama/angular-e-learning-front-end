@@ -1,11 +1,20 @@
 <div id="media" [formGroup]="form">
   <div class="form-group" formGroupName="media">
-    <label for="">Title</label>
-    <input type="text" class="form-control" formControlName="title">
+    <mat-card class="mat-elevation-z8">
+      <mat-card-title>Image of course</mat-card-title>
+      <img mat-card-image [src]="urlImage" alt="uploadImage" formControlName="image">
+      <mat-card-actions><input mat-button type="file" placeholder="Choose image"></mat-card-actions>
+      <mat-card-footer>Size: 300x300 pixels. Supports: jpg,jpeg, or png</mat-card-footer>
+    </mat-card>
+    <mat-card class="mat-elevation-z8">
+      <mat-card-title>Introductory video</mat-card-title>
+      <img mat-card-image [src]="urlImage" alt="uploadImage" formControlName="image">
+      <mat-card-actions><input mat-button type="file" placeholder="Choose image"></mat-card-actions>
+      <mat-card-footer>Size: 560x300 pixels. Supports: jpg,jpeg, or png</mat-card-footer>
+    </mat-card>
   </div>
   <div>
     <button mat-raised-button color="primary" matStepperPrevious>Back</button>
     <button mat-raised-button color="primary" matStepperNext (click)="step3Submitted()">Next</button>
   </div>
 </div>
-

@@ -16,6 +16,10 @@ export class PublishComponent implements OnInit {
   submit() {
     console.log('submit');
     console.log(this.form.value);
-    this.formSubmitted = true;
+    /* this.formSubmitted = true; */
+  }
+  saveCourse(){
+    console.log('save course');
+    console.log(this.form.value);
   }
 }

@@ -1,20 +1,9 @@
-<!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ipsam omnis aliquid eos repudiandae quos, vel eum. Impedit nostrum ratione deserunt temporibus quas delectus quaerat rem, maxime facere expedita enim.</p>
-<h1>YEKOLA</h1>
-<fa-icon style="font-size:40px;" [icon]="faBitcoin" ></fa-icon>
-<fa-icon style="font-size:40px; color: yellow;" [icon]="faHouse" ></fa-icon> -->
-<!-- <app-header></app-header>
-
-<router-outlet></router-outlet>
-<app-sidenav></app-sidenav> -->
 <mat-drawer-container>
-
   <mat-drawer mode="side" [opened]="sideBarOpen">
     <app-sidenav></app-sidenav>
   </mat-drawer>
-
   <mat-drawer-content>
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
     <router-outlet></router-outlet>
   </mat-drawer-content>
-
 </mat-drawer-container>

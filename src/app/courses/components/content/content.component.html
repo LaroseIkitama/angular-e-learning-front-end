@@ -1,11 +1,11 @@
 <div id="content" [formGroup]="form">
   <div class="form-group" formGroupName="content">
-    <mat-card>
+    <mat-card id="card__element" class="mat-elevation-z8">
       <mat-card-title>Content creation</mat-card-title>
       <mat-card-actions align="end"><button mat-raised-button color="primary" (click)="onSectionTitle()">New section</button></mat-card-actions>
     </mat-card>
   </div>
-  <div>
+  <div id="card__btn">
     <button mat-raised-button color="primary" matStepperPrevious>Back</button>
     <button mat-raised-button color="primary" matStepperNext (click)="step2Submitted()">Next</button>
   </div>

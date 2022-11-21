@@ -24,8 +24,8 @@ export class MultiformComponent implements OnInit {
         'videoContent': new FormControl(null)
       }),
       'media': new FormGroup({
-        'imageCourse': new FormControl(null, Validators.required),
-        'videoCourse': new FormControl(null, Validators.required)
+        'imageUrl': new FormControl(null, Validators.required),
+        'videoUrl': new FormControl(null, Validators.required)
       })
     })
 

@@ -1,0 +1,19 @@
+.form-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.mat-card{
+  width: 560px;
+  height: 300px;
+  margin: 5px 20px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  img{
+    width: 100%;
+  }
+}
+button{
+  margin: auto 3px;
+}
