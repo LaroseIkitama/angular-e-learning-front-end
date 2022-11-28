@@ -1,0 +1,41 @@
+<div class="container-fluid page">
+  <div class="page__box p-3 mt-2">Chapter list</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data-list">
+
+      <div class="formWrapper">
+        <form [formGroup]="chapterForm" (ngSubmit)="submitForm()" novalidate>
+          <mat-form-field appearance="fill" hidden>
+            <mat-label>ID</mat-label>
+            <input matInput required formControlName="id">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput required formControlName="title" placeholder="Type title">
+            <!-- error title -->
+            <mat-error *ngIf="chapterForm.get('title')?.hasError('required')">Title of content <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="ckeditorContainer">
+            <mat-label>Content</mat-label>
+            <!-- error title -->
+            <mat-error *ngIf="chapterForm.get('content')?.hasError('required') && checkCKEditor==false">Title of content
+              <strong>required</strong>
+            </mat-error>
+            <ckeditor formControlName="content"></ckeditor>
+          </div>
+          <button mat-raised-button color="primary" (click)="onSubmitForm()">Submit</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--  <ckeditor formControlName="content"> -->
+<!-- <ckeditor [config]="{placeholder:'Type the content of chapter here'}" [editor]="Editor" formControlName="content">
+      </ckeditor> -->

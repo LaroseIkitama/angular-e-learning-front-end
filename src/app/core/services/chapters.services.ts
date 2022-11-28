@@ -13,11 +13,23 @@ const httpOptions = {
 export class ChaptersServices {
   constructor(private http: HttpClient) { }
 
-  getAllChapter(): Observable<Chapter[]> {
+  getChapter(id: number): Observable<Chapter> {
+    return this.http.get<Chapter>(`http://localhost:3000/chapters/${id}`);
+  }
+
+  getChapters(): Observable<Chapter[]> {
     return this.http.get<Chapter[]>('http://localhost:3000/chapters');
   }
 
   createChapter(chapter: Chapter): Observable<Chapter> {
-    return this.http.post<Chapter>('', chapter, httpOptions);
+    return this.http.post<Chapter>('http://localhost:3000/chapters', chapter, httpOptions);
+  }
+
+  deleteChapter(id: number) {
+    return this.http.delete(`http://localhost:3000/chapters/${id}`, httpOptions);
+  }
+
+  updateChapter(chapter: Chapter): Observable<Chapter> {
+    return this.http.put<Chapter>('http://localhost:3000/chapters', chapter, httpOptions);
   }
 }

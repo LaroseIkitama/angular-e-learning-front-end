@@ -13,6 +13,7 @@ import { ContentComponent } from './components/content/content.component';
 import { MediaComponent } from './components/media/media.component';
 import { PublishComponent } from './components/publish/publish.component';
 import { ModalPopupSectionTitleComponent } from './components/modal-popup-section-title/modal-popup-section-title.component';
+import { StepOneComponent } from './components/step-one/step-one.component';
 
 
 
@@ -25,7 +26,9 @@ import { ModalPopupSectionTitleComponent } from './components/modal-popup-sectio
     ContentComponent,
     MediaComponent,
     PublishComponent,
-    ModalPopupSectionTitleComponent
+    ModalPopupSectionTitleComponent,
+    StepOneComponent
+
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,8 @@ import { ModalPopupSectionTitleComponent } from './components/modal-popup-sectio
   exports: [
     CourseListComponent,
     NewCourseComponent,
-    MultiformComponent
+    MultiformComponent,
+    StepOneComponent
   ]
 })
 export class CoursesModule { }

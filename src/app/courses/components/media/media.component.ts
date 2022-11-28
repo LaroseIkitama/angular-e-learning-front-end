@@ -22,4 +22,14 @@ export class MediaComponent implements OnInit {
     this.form.get('media')!.get('videoCourse')!.markAllAsTouched();
     this.form.get('media')!.get('videoCourse')!.updateValueAndValidity();
   }
+
+  onSelectFile(e:any) {
+    if (e.target.files) {
+      let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (event: any) => {
+        this.urlImage = event.target.result;
+      }
+    }
+  }
 }

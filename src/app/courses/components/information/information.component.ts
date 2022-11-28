@@ -18,7 +18,7 @@ export class InformationComponent implements OnInit {
 
   @Input() form!: FormGroup;
   ngOnInit(): void {
-    this.categoriesService.getAllCategories().subscribe(cat => {
+    this.categoriesService.getCategories().subscribe(cat => {
       this.categories = cat;
       console.log(this.categories);
     });

@@ -37,4 +37,9 @@ export class ContentComponent implements OnInit {
       enterAnimationDuration: '500ms'
     });
   }
+
+  newSection(event:any){
+    console.log('Content bitch');
+    console.log(event);
+  }
 }

@@ -9,11 +9,15 @@ import { CourseComponent } from './course/course.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { ParametersComponent } from './parameters/parameters.component';
-import {  FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'src/material.module';
 import { CoreModule } from './core/core.module';
 import { CoursesModule } from './courses/courses.module';
+import { CategoriesModule } from './categories/categories.module';
+import { SectionsModule } from './sections/sections.module';
+import { ChaptersModule } from './chapters/chapters.module';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -22,17 +26,23 @@ import { CoursesModule } from './courses/courses.module';
     CourseComponent,
     DashboardComponent,
     ReviewListComponent,
-    ParametersComponent
+    ParametersComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    FontAwesomeModule,
     HttpClientModule,
+    FontAwesomeModule,
+    MaterialModule,
     CoreModule,
-    CoursesModule
+    FormsModule,
+    ReactiveFormsModule,
+    CoursesModule,
+    CategoriesModule,
+    SectionsModule,
+    ChaptersModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

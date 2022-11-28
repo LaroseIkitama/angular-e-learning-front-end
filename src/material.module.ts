@@ -19,6 +19,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 
 
+import {MatTreeModule} from '@angular/material/tree';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 
@@ -30,6 +34,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatDividerModule,
     MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatStepperModule,
     MatTableModule,
@@ -38,7 +44,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTreeModule,
+    MatSelectModule
+
 
   ]
 })

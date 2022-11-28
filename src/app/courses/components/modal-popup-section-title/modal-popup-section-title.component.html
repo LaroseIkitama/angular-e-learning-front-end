@@ -1,11 +1,26 @@
 <h1 mat-dialog-title>New Section</h1>
-<div mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <mat-label>Title</mat-label>
-    <input type="text" matInput>
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-raised-button color="warn" mat-dialog-close>Reset</button>
-  <button mat-raised-button color="primary">Save</button>
-</div>
+<form [formGroup]="sectionForm">
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput formControlName="title">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" mat-dialog-close>Reset</button>
+    <button mat-raised-button color="primary" [disabled]="sectionForm.invalid" (click)="addNewSection()">Save</button>
+  </div>
+<!-- <ul>
+  <li>
+    <mat-card>
+      <mat-card-title>
+        <mat-icon>reorder</mat-icon> Section 1
+      </mat-card-title>
+    </mat-card>
+    <mat-card-content>
+      <ul>Chapter 1</ul>
+    </mat-card-content>
+    <button>Add chapter</button>
+  </li>
+</ul> -->
+</form>

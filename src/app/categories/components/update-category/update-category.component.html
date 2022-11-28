@@ -1,0 +1,25 @@
+<div class="container-fluid page">
+  <div class="page__box p-3 mt-2">Update category</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data-list">
+      <div class="form-card" ><!-- *ngIf="category$ | async as category" -->
+        <form>
+          <div hidden>
+            <label for="id">ID</label>
+            <input type="number" [(ngModel)]="currentCategory.id"  name="id" class="form-control">
+          </div>
+          <div>
+            <label for="name">Name</label>
+            <input type="text" [(ngModel)]="currentCategory.name"  name="name" class="form-control">
+          </div>
+          <div class="action-buttons">
+            <button mat-raised-button color="primary" type="submit" (click)="submitForm()">Save
+              modification</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- end -->
+    </div>
+  </div>
+</div>

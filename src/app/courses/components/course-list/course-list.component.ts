@@ -14,11 +14,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
-  courses!: any;
+  courses!: Course[];
+  allCourses!: Course[];
   courses$!: Observable<Course[]>;
   dataSource!: MatTableDataSource<Course[]>;
 
-  displayedColumn: string[] = ['id', 'title', 'categoryId', 'level', 'chapiters', 'status', 'actions'];
+  displayedColumn: string[] = ['id', 'title', 'category', 'level', 'chapiters', 'status', 'actions'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -26,9 +27,8 @@ export class CourseListComponent implements OnInit {
   constructor(private coursesService: CoursesService, private router: Router) {
     this.coursesService.getAllCourses().subscribe(data => {
       this.courses = data;
-      console.log(data.values);
 
-      this.dataSource = new MatTableDataSource(this.courses);
+      this.dataSource = new MatTableDataSource(<any>this.courses);
 
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

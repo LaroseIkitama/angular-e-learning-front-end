@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { catchError, Observable, of, tap } from "rxjs";
 import { Category } from "../models/category.model";
 
 const httpOptions = {
@@ -13,11 +13,47 @@ const httpOptions = {
 export class CategoriesService {
   constructor(private http: HttpClient) { }
 
-  getAllCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>('http://localhost:3000/categories');
+  /* getCategory(id: number): Observable<Category> {
+    return this.http.get<Category>(`http://localhost:3000/categories/${id}`).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, undefined))
+    );
+  } */
+  getCategory(id:number): Observable<Category>{
+    return this.http.get<Category>(`http://localhost:3000/categories/${id}`);
+  }
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>('http://localhost:3000/categories').pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, []))
+    );
   }
 
+   updateCategory(category: Category): Observable<Category> {
+     return this.http.put<Category>('http://localhost:3000/categories', category, httpOptions);
+   }
+  /* updateCategory(category: Category): Observable<Category | undefined> {
+    return this.http.put<Category>('http://localhost:3000/categories', category, httpOptions).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, undefined))
+    );
+  } */
   createCategory(category: Category): Observable<Category> {
-    return this.http.post<Category>('', category, httpOptions);
+    return this.http.post<Category>('http://localhost:3000/categories', category, httpOptions);
   }
+
+  deleteCategory(id: number) {
+    return this.http.delete(`http://localhost:3000/categories/${id}`, httpOptions);
+  }
+
+
+  private log(response: Category[] | Category | undefined) {
+    console.log(response);
+  }
+
+  private handleError(error: Error, errorValue: any) {
+    console.error(error);
+    return of(errorValue);
+  }
+
 }
