@@ -21,15 +21,12 @@ import { UpdateCategoryComponent } from './components/update-category/update-cat
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatPaginatorModule,
-    ReactiveFormsModule,
+    MaterialModule
   ],
   exports: [
     CategoryListComponent,
-    NewCategoryComponent
+    NewCategoryComponent,
+    UpdateCategoryComponent
   ]
 })
 export class CategoriesModule { }

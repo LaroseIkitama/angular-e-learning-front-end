@@ -24,8 +24,6 @@ import { SingleChapterComponent } from './components/single-chapter/single-chapt
     CommonModule,
     RouterModule,
     CKEditorModule,
-    FormsModule,
-    ReactiveFormsModule,
     MaterialModule
   ],
   exports: [

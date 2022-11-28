@@ -13,13 +13,7 @@ const httpOptions = {
 export class CategoriesService {
   constructor(private http: HttpClient) { }
 
-  /* getCategory(id: number): Observable<Category> {
-    return this.http.get<Category>(`http://localhost:3000/categories/${id}`).pipe(
-      tap((response) => this.log(response)),
-      catchError((error) => this.handleError(error, undefined))
-    );
-  } */
-  getCategory(id:number): Observable<Category>{
+  getCategory(id: number): Observable<Category> {
     return this.http.get<Category>(`http://localhost:3000/categories/${id}`);
   }
   getCategories(): Observable<Category[]> {
@@ -29,15 +23,9 @@ export class CategoriesService {
     );
   }
 
-   updateCategory(category: Category): Observable<Category> {
-     return this.http.put<Category>('http://localhost:3000/categories', category, httpOptions);
-   }
-  /* updateCategory(category: Category): Observable<Category | undefined> {
-    return this.http.put<Category>('http://localhost:3000/categories', category, httpOptions).pipe(
-      tap((response) => this.log(response)),
-      catchError((error) => this.handleError(error, undefined))
-    );
-  } */
+  updateCategory(category: Category): Observable<Category> {
+    return this.http.put<Category>('http://localhost:3000/categories', category, httpOptions);
+  }
   createCategory(category: Category): Observable<Category> {
     return this.http.post<Category>('http://localhost:3000/categories', category, httpOptions);
   }
