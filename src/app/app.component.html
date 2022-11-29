@@ -18,10 +18,10 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="" routerLinkActive="list-item-active" >Home</a>
+          <a class="nav-link active" aria-current="page" href="" routerLinkActive="list-item-active">Home</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categories
           </a>
           <ul class="dropdown-menu">
@@ -30,7 +30,8 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="" routerLinkActive="list-item-active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="" routerLinkActive="list-item-active" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
             Formations
           </a>
           <ul class="dropdown-menu">
@@ -39,7 +40,8 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="" routerLinkActive="list-item-active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="" routerLinkActive="list-item-active" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
             Courses
           </a>
           <ul class="dropdown-menu">
@@ -48,7 +50,8 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"  routerLinkActive="list-item-active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" routerLinkActive="list-item-active" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
             Trainers
           </a>
           <ul class="dropdown-menu">
@@ -57,7 +60,8 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"  routerLinkActive="list-item-active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" routerLinkActive="list-item-active" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
             Reviews
           </a>
           <ul class="dropdown-menu">
@@ -66,21 +70,71 @@
           </ul>
         </li>
       </ul>
-      <div class="right offset-5">
+      <div class="offset-5">
         <ul class="navbar-nav">
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               [Username]
+              <!-- {{ authService.loggedUser }} -->
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" routerLink="/login" routerLinkActive="list-item-active"><mat-icon>exit_to_app</mat-icon></a></li>
+              <li>
+                <a class="dropdown-item" routerLink="/login" routerLinkActive="list-item-active">
+                  Log out
+                </a>
+              </li>
               <li><a class="dropdown-item" routerLink="/login" routerLinkActive="list-item-active">Log in</a></li>
-              <li><a class="dropdown-item" routerLink="/parameters" routerLinkActive="list-item-active"><mat-icon>settings</mat-icon></a></li>
+              <li><a class="dropdown-item" routerLink="/parameters" routerLinkActive="list-item-active">
+                  Parameters
+                </a></li>
             </ul>
           </li>
         </ul>
       </div>
+      <!-- <ng-container *ngIf="authService.loggedUser; else elseTemplate">
+        <div class="offset-7">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                {{ authService.loggedUser }}
+
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" routerLink="/login" routerLinkActive="list-item-active">
+                    <mat-icon>exit_to_app</mat-icon>
+                  </a>
+                </li>
+                <li><a class="dropdown-item" routerLink="/login" routerLinkActive="list-item-active">Log in</a></li>
+                <li><a class="dropdown-item" routerLink="/parameters" routerLinkActive="list-item-active">
+                    <mat-icon>settings</mat-icon>
+                  </a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+      <ng-template #elseTemplate>
+
+        <div class="offset-10">
+          <ul class="navbar-nav offset">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Connection
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" routerLink="/login" routerLinkActive="list-item-active">
+                    Create account
+                  </a>
+                </li>
+                <li><a class="dropdown-item" routerLink="/login" routerLinkActive="list-item-active">Log in</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </ng-template> -->
     </div>
   </div>
 </nav>

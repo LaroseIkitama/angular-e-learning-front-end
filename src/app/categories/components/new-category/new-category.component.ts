@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { Category } from '../../../core/models/category.model';
 import { CategoriesService } from '../../../core/services/categories.service';
 
@@ -15,6 +16,7 @@ export class NewCategoryComponent implements OnInit {
   categoryForm!: FormGroup;
   message!: string;
   constructor(private categoriesService: CategoriesService,
+    public authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router) { }
 

@@ -2,19 +2,21 @@
   <div class="page__box p-3 mt-2">Create category</div>
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data-list">
-      <div class="form-card" >
+      <div class="form-card">
+        <!-- {{ authService.loggedUser }} -->
         <form [formGroup]="categoryForm">
-          <mat-form-field appearance="fill" hidden>
+          <mat-form-field appearance="outline" hidden>
             <mat-label>ID</mat-label>
             <input matInput type="number" formControlName="id">
           </mat-form-field>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
             <input matInput type="text" formControlName="name">
           </mat-form-field>
           <div class="action-buttons">
             <button mat-raised-button color="warn" type="reset">Reset</button>
-            <button mat-raised-button color="primary" type="submit" (click)="onSubmitForm()" [disabled]="categoryForm.invalid">Enregistrer</button>
+            <button mat-raised-button color="primary" type="submit" (click)="onSubmitForm()"
+              [disabled]="categoryForm.invalid">Save</button>
           </div>
         </form>
       </div>

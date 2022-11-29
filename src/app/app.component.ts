@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './core/services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,14 +8,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   title = 'e-learning-front';
-  sideBarOpen=true;
-constructor(private router:Router){}
+
+constructor(private router:Router, public authService:AuthService){}
 
   ngOnInit(): void {
     console.log(this.router.url);
-  }
-
-  sideBarToggler(){
-    this.sideBarOpen=!this.sideBarOpen;
   }
 }

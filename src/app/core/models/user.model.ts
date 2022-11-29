@@ -1,5 +1,5 @@
 export class User {
-  id!:number;
+  /* id!:number;
   username!:string;
   firstName!:string;
   lastName!:string;
@@ -8,6 +8,9 @@ export class User {
   biography!:string;
   avatar!:string;
   website!:string;
+  roles!:string[]; */
+  username!:string;
+  password!:string;
   roles!:string[];
 
 

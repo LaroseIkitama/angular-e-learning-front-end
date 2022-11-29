@@ -1,0 +1,52 @@
+<div class="container-fluid page">
+  <div class="page__box p-3 mt-2">New formation</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data-list ">
+      <div class="form_card ">
+        <form>
+          <div id="left">
+            <mat-form-field appearance="fill" hidden>
+              <mat-label>ID</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput>
+            </mat-form-field>
+
+          </div>
+          <div id="right">
+            <mat-form-field appearance="outline">
+              <mat-label>Level</mat-label>
+              <mat-select name="level">
+                <mat-option *ngFor="let level of levels" [value]="level.name">
+                  {{level.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Duration</mat-label>
+              <mat-select name="duration">
+                <mat-option *ngFor="let duration of durations" [value]="duration.name">
+                  {{duration.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Category</mat-label>
+              <mat-select name="duration">
+                <mat-option *ngFor="let category of categories" [value]="category">
+                  {{category.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form_btn">
+            <button mat-raised-button color="warn">Reset</button>
+            <button mat-raised-button color="primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
