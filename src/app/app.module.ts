@@ -9,13 +9,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'src/material.module';
 import { CoreModule } from './core/core.module';
-import { CoursesModule } from './courses/courses.module';
 import { CategoriesModule } from './categories/categories.module';
 import { HomeComponent } from './home/home.component';
 import { ChaptersModule } from './chapters/chapters.module';
 import { LoginComponent } from './login/login.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { FormationsModule } from './formations/formations.module';
+import { Courses2Module } from './courses2/courses2.module';
+import { SectionsModule } from './sections/sections.module';
 
 
 @NgModule({
@@ -35,10 +35,10 @@ import { FormationsModule } from './formations/formations.module';
     ReactiveFormsModule,
     MaterialModule,
     CoreModule,
-    CoursesModule,
     CategoriesModule,
-    FormationsModule,
     ChaptersModule,
+    Courses2Module,
+    SectionsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Course } from 'src/app/core/models/course.model';
 import { Section } from 'src/app/core/models/section.model';
+import { CoursesService } from 'src/app/core/services/courses.service';
 
 
 
@@ -12,35 +16,68 @@ import { Section } from 'src/app/core/models/section.model';
 export class NewSectionComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['Id', 'Title'];
+  displayedColumns: string[] = ['Id', 'Title', 'Course'];
   sections: Section[] = [
     /* { id: 1, title: "title", description: "Une description" },
     { id: 2, title: "title 2", description: "Une description 2" } */
   ];
+  courses!: Course[];
+  section!: Section;
+  dataSource = new MatTableDataSource<Section>(this.sections);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
 
   @ViewChild(MatTable)
   table!: MatTable<any>;
+  sectionForm!: FormGroup;
+  constructor(private formBuilder: FormBuilder,
+    private coursesService: CoursesService) {
+    this.coursesService.getCourses().
+      subscribe(courses => {
+        this.courses = courses;
+      });
 
-  constructor() {
-
-   }
+  }
 
   ngOnInit(): void {
+    this.sectionForm = this.formBuilder.group({
+      id: [null,],
+      title: [null, Validators.required],
+      course: [null, Validators.required]
+    });
+
+
     /* console.log(this.dataSource[0][0]); */
+
   }
 
   addData() {
-    let newSection:Section={id:3,title:"new title",description:"new description"};
-   this.sections.push(newSection);
-   console.log(this.sections);
-   this.table.renderRows();
+    this.sections.push(this.sectionForm.value);
+    this.table.renderRows();
+    this.dataSource = new MatTableDataSource(<any>this.sections);
+    this.dataSource.paginator = this.paginator;
+    console.log(this.section);
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
   removeData() {
     this.sections.pop();
-    console.log(this.sections);
     this.table.renderRows();
+    this.dataSource = new MatTableDataSource(<any>this.sections);
+    this.dataSource.paginator = this.paginator;
+    console.log(this.section);
 
   }
-
+  saveSection() {
+    console.log(this.sections);
+  }
 }

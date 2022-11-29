@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Course } from "../models/course.model";
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
+
+const apiUrl ='http://localhost:3000/courses';
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +17,31 @@ export class CoursesService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>('http://localhost:3000/courses');
+  getCourse(id: number): Observable<Course> {
+    return this.http.get<Course>(`${apiUrl}/${id}`);
+  }
+
+  getCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(apiUrl).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, []))
+    );
   }
 
   createCourse(course: Course): Observable<Course> {
-    return this.http.post<Course>('', course, httpOptions);
+    return this.http.post<Course>(apiUrl, course, httpOptions);
   }
 
-  getCourseById(courseId: number): Course {
-    const course = this.courses.find(course => course.id === courseId);
+  deleteCourse(id: number) {
+    return this.http.delete(`${apiUrl}/${id}`, httpOptions);
+  }
 
-    if (course) {
-      return course;
-    } else {
-      throw new Error("Course not found!");
+  private log(response: Course[] | Course | undefined) {
+    console.log(response);
+  }
 
-    }
-
+  private handleError(error: Error, errorValue: any) {
+    console.error(error);
+    return of(errorValue);
   }
 }
