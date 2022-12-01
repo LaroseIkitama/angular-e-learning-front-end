@@ -13,28 +13,27 @@
           <div class="mat-elevation-z8">
             <table mat-table matSort [dataSource]="dataSource">
 
-              <ng-container matColumnDef="Id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Order</th>
-                <td mat-cell *matCellDef="let row">{{ row.id }}</td>
-              </ng-container>
-
               <ng-container matColumnDef="Title">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Order</th>
-                <td mat-cell *matCellDef="let row">{{ row.title | titlecase }}</td>
+                <td mat-cell *matCellDef="let section">{{ section.title | titlecase }}</td>
               </ng-container>
               <ng-container matColumnDef="Course">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-                <td mat-cell *matCellDef="let row">{{row.title| titlecase }}</td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Course</th>
+                <td mat-cell *matCellDef="let section">
+                  <div *ngFor="let course of courses">
+                    <span *ngIf="course.id===section.courseId">{{course.title}}</span>
+                  </div>
+                </td>
               </ng-container>
 
               <ng-container matColumnDef="Actions">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
-                <td mat-cell *matCellDef="let row">
+                <td mat-cell *matCellDef="let section">
 
-                  <button class="btn btn-delete" (click)="deleteSection(row)">
+                  <button class="btn btn-delete" (click)="deleteSection(section)">
                     <mat-icon>delete</mat-icon>
                   </button>
-                  <button class="btn btn-edit" [routerLink]="['/update-section',row.id]">
+                  <button class="btn btn-edit" [routerLink]="['/update-section',section.id]">
                     <mat-icon>create</mat-icon>
                   </button>
                 </td>

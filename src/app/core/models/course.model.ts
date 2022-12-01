@@ -6,8 +6,9 @@ export class Course {
   description!: string;
   image!: string;
   video!: string;
+  duration!: string;
   level!: string;
   status!: number;
-  category!:Category;
-
+  userId!: number;
+  categoryId!: number;
 }

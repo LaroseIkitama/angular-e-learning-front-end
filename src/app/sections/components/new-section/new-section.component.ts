@@ -37,6 +37,7 @@ export class NewSectionComponent implements OnInit {
       subscribe(courses => {
         this.courses = courses;
       });
+      console.log(this.courses);
 
   }
 
@@ -44,7 +45,7 @@ export class NewSectionComponent implements OnInit {
     this.sectionForm = this.formBuilder.group({
       id: [null,],
       title: [null, Validators.required],
-      course: [null, Validators.required]
+      courseId: [null, Validators.required]
     });
 
 

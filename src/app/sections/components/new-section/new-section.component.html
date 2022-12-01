@@ -1,5 +1,5 @@
 <div class="container-fluid page">
-  <div class="page__box p-3 mt-2">Add in order and preview before  saving completely</div>
+  <div class="page__box p-3 mt-2">Add in order and preview before saving completely</div>
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data-list">
       <div class="stepper_content">
@@ -16,8 +16,8 @@
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Course</mat-label>
-                <mat-select name="course" formControlName="course">
-                  <mat-option *ngFor="let course of courses" [value]="course">
+                <mat-select name="course" formControlName="courseId">
+                  <mat-option *ngFor="let course of courses" [value]="course.id">
                     {{course.title}}
                   </mat-option>
                 </mat-select>
@@ -29,12 +29,13 @@
                 Remove last line insert
               </button>
             </form>
-            <button mat-raised-button color="primary" [disabled]="!sections.length" (click)="saveSection()" class="demo-button">
+            <button mat-raised-button color="primary" [disabled]="!sections.length" (click)="saveSection()"
+              class="demo-button">
               Save completely
             </button>
           </div>
           <div class="table_content" class="mat-elevation-z8 demo-table">
-            <table #table mat-table [dataSource]="dataSource" >
+            <table #table mat-table [dataSource]="dataSource">
               <!-- Id Column -->
               <ng-container matColumnDef="Id">
                 <th mat-header-cell *matHeaderCellDef>Oder of display</th>
@@ -50,7 +51,12 @@
               <!-- Action Column -->
               <ng-container matColumnDef="Course">
                 <th mat-header-cell *matHeaderCellDef>Course</th>
-                <td mat-cell *matCellDef="let section">{{section.course.title}}</td>
+                <td mat-cell *matCellDef="let section">
+                  <div *ngFor="let course of courses">
+                    <span *ngIf="course.id===section.courseId">{{course.title}}</span>
+                  </div>
+
+                </td>
               </ng-container>
 
 
@@ -59,7 +65,8 @@
               </tr>
 
             </table>
-            <mat-paginator #paginator [pageSizeOptions]="[2,1,3,4]" arial-label="select page of courses"></mat-paginator>
+            <mat-paginator #paginator [pageSizeOptions]="[2,1,3,4]" arial-label="select page of courses">
+            </mat-paginator>
           </div>
         </div>
       </div>

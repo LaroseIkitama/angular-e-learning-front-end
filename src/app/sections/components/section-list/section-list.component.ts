@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Course } from 'src/app/core/models/course.model';
 import { Section } from 'src/app/core/models/section.model';
 import { CoursesService } from 'src/app/core/services/courses.service';
 import { SectionsService } from 'src/app/core/services/sections.service';
@@ -13,16 +14,20 @@ import { SectionsService } from 'src/app/core/services/sections.service';
 })
 export class SectionListComponent implements OnInit {
 
-  courseName!:string;
+  courses!: Course[];
   sections!: Section[];
   dataSource!: MatTableDataSource<Section[]>;
-  displayedColumn: string[] = ['Id', 'Title', 'Course', 'Actions'];
+  displayedColumn: string[] = ['Title', 'Course', 'Actions'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private sectionsService: SectionsService,
-    private coursesService: CoursesService) { }
+    private coursesService: CoursesService) {
+      this.coursesService.getCourses().subscribe(courses => {
+        this.courses = courses;
+      })
+    }
 
   ngOnInit(): void {
 
@@ -39,6 +44,8 @@ export class SectionListComponent implements OnInit {
     console.log(this.sections);
   }
 
+
+
   deleteSection(section: Section) {
     let confirmation = confirm("Are you sure? You want to delete this section?");
     if (confirmation) {
@@ -47,14 +54,6 @@ export class SectionListComponent implements OnInit {
         window.location.reload();
       });
     }
-  }
-
-  getNameOfCourse(id: number):string {
-
-    this.coursesService.getCourse(id).subscribe(course => {
-      this.courseName= course.title;
-    });
-    return this.courseName;
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

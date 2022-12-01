@@ -5,6 +5,10 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 import { UpdateCourseComponent } from './components/update-course/update-course.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/material.module';
+import { InformationFormGroupComponent } from './components/information-form-group/information-form-group.component';
+import { ContentFormGroupComponent } from './components/content-form-group/content-form-group.component';
+import { MediaFormGroupComponent } from './components/media-form-group/media-form-group.component';
+import { PublishFormGroupComponent } from './components/publish-form-group/publish-form-group.component';
 
 
 
@@ -12,7 +16,11 @@ import { MaterialModule } from 'src/material.module';
   declarations: [
     NewCourseComponent,
     CourseListComponent,
-    UpdateCourseComponent
+    UpdateCourseComponent,
+    InformationFormGroupComponent,
+    ContentFormGroupComponent,
+    MediaFormGroupComponent,
+    PublishFormGroupComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +30,11 @@ import { MaterialModule } from 'src/material.module';
   exports:[
     NewCourseComponent,
     CourseListComponent,
-    UpdateCourseComponent
+    UpdateCourseComponent,
+    InformationFormGroupComponent,
+    ContentFormGroupComponent,
+    MediaFormGroupComponent,
+    PublishFormGroupComponent
   ]
 })
 export class Courses2Module { }
