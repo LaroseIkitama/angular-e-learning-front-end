@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Section } from 'src/app/core/models/section.model';
+import { DialogSectionFormGroupComponent } from '../dialog-section-form-group/dialog-section-form-group.component';
 
 @Component({
   selector: 'app-content-form-group',
@@ -8,21 +11,42 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ContentFormGroupComponent implements OnInit {
 
-@Input() form!:FormGroup
+  @Input() form!: FormGroup
 
-  constructor() { }
+  sectionInputForm!: FormGroup;
+
+  constructor(private matDialog: MatDialog) { }
 
   ngOnInit(): void {
   }
   step2Submitted() {
 
   }
-
-  addSection(){
-    const sectionForm = new FormGroup({
-      title: new FormControl(null,Validators.required),
-      chapiters: new FormArray([])
+  onDialog() {
+    this.matDialog.open(DialogSectionFormGroupComponent, {
+      width: '40%',
+      enterAnimationDuration: '500ms'
     });
-    this.form.get('content')?.value;
+  }
+
+  addSection() {
+     this.sectionInputForm = new FormGroup({
+      id: new FormControl(null),
+      title: new FormControl(null, Validators.required),
+    });
+    const dialogRef = this.matDialog.open(DialogSectionFormGroupComponent, {
+      width: '40%',
+      enterAnimationDuration: '500ms',
+      data: { formSection: this.sectionInputForm }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      /* console.log('The dialog was closed', result.data.value); */
+      this.sectionInputForm=result.data;
+      this.form.value.content.push(this.sectionInputForm.value);
+      console.log("Formulaire de base apres saisie d'information");
+      console.log(this.form.value);
+
+    })
   }
 }

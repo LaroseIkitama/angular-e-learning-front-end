@@ -30,6 +30,7 @@ export class NewCourseComponent implements OnInit {
       })
     });
 
-/*     console.log(this.courseForm.controls['content'] as FormArray);
- */  }
+    console.log('Formulaire de base');
+    console.log(this.courseForm.value);
+  }
 }

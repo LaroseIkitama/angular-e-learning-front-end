@@ -9,6 +9,7 @@ import { InformationFormGroupComponent } from './components/information-form-gro
 import { ContentFormGroupComponent } from './components/content-form-group/content-form-group.component';
 import { MediaFormGroupComponent } from './components/media-form-group/media-form-group.component';
 import { PublishFormGroupComponent } from './components/publish-form-group/publish-form-group.component';
+import { DialogSectionFormGroupComponent } from './components/dialog-section-form-group/dialog-section-form-group.component';
 
 
 
@@ -20,7 +21,8 @@ import { PublishFormGroupComponent } from './components/publish-form-group/publi
     InformationFormGroupComponent,
     ContentFormGroupComponent,
     MediaFormGroupComponent,
-    PublishFormGroupComponent
+    PublishFormGroupComponent,
+    DialogSectionFormGroupComponent
   ],
   imports: [
     CommonModule,
