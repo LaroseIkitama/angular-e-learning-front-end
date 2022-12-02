@@ -10,6 +10,7 @@ import { ContentFormGroupComponent } from './components/content-form-group/conte
 import { MediaFormGroupComponent } from './components/media-form-group/media-form-group.component';
 import { PublishFormGroupComponent } from './components/publish-form-group/publish-form-group.component';
 import { DialogSectionFormGroupComponent } from './components/dialog-section-form-group/dialog-section-form-group.component';
+import { DialogSectionUpdateFormGroupComponent } from './components/dialog-section-update-form-group/dialog-section-update-form-group.component';
 
 
 
@@ -22,7 +23,8 @@ import { DialogSectionFormGroupComponent } from './components/dialog-section-for
     ContentFormGroupComponent,
     MediaFormGroupComponent,
     PublishFormGroupComponent,
-    DialogSectionFormGroupComponent
+    DialogSectionFormGroupComponent,
+    DialogSectionUpdateFormGroupComponent
   ],
   imports: [
     CommonModule,

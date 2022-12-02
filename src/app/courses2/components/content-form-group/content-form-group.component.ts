@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Section } from 'src/app/core/models/section.model';
 import { DialogSectionFormGroupComponent } from '../dialog-section-form-group/dialog-section-form-group.component';
+import { DialogSectionUpdateFormGroupComponent } from '../dialog-section-update-form-group/dialog-section-update-form-group.component';
 
 @Component({
   selector: 'app-content-form-group',
@@ -14,6 +14,7 @@ export class ContentFormGroupComponent implements OnInit {
   @Input() form!: FormGroup
 
   sectionInputForm!: FormGroup;
+  currentSectionForm!: FormGroup;
 
   constructor(private matDialog: MatDialog) { }
 
@@ -30,7 +31,7 @@ export class ContentFormGroupComponent implements OnInit {
   }
 
   addSection() {
-     this.sectionInputForm = new FormGroup({
+    this.sectionInputForm = new FormGroup({
       id: new FormControl(null),
       title: new FormControl(null, Validators.required),
     });
@@ -42,11 +43,43 @@ export class ContentFormGroupComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       /* console.log('The dialog was closed', result.data.value); */
-      this.sectionInputForm=result.data;
+      this.sectionInputForm = result.data;
       this.form.value.content.push(this.sectionInputForm.value);
-      console.log("Formulaire de base apres saisie d'information");
+      console.log("Formulary de base apres saisie d'information");
       console.log(this.form.value);
+    });
+  }
 
-    })
+  onDelete(index: number) {
+    console.log("Valeur a supprimer");
+    console.log(this.form.value.content[index]);
+
+    console.log("Tableau avant suppression");
+    console.log(this.form.value.content);
+    console.log("Tableau Apres suppression");
+    this.form.value.content.pop(this.form.value.content[index]);
+    console.log(this.form.value.content);
+  }
+
+  onUpdate(index: number) {
+    this.currentSectionForm = new FormGroup({
+      id: new FormControl(null),
+      title: new FormControl(null, Validators.required),
+    });
+    this.currentSectionForm.value.id = this.form.value.content[index].id;
+    this.currentSectionForm.value.title = this.form.value.content[index].title;
+
+    const dialogRef = this.matDialog.open(DialogSectionUpdateFormGroupComponent, {
+      width: '40%',
+      enterAnimationDuration: '500ms',
+      data: { formSection: this.currentSectionForm }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.currentSectionForm = result.data;
+      this.form.value.content[index] = this.currentSectionForm.value;
+      console.log("Formulary de base apres update d'information");
+      console.log(this.form.value);
+    });
   }
 }

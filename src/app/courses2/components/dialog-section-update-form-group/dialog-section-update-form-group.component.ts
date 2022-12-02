@@ -4,15 +4,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Section } from 'src/app/core/models/section.model';
 
 @Component({
-  selector: 'app-dialog-section-form-group',
-  templateUrl: './dialog-section-form-group.component.html',
-  styleUrls: ['./dialog-section-form-group.component.scss']
+  selector: 'app-dialog-section-update-form-group',
+  templateUrl: './dialog-section-update-form-group.component.html',
+  styleUrls: ['./dialog-section-update-form-group.component.scss']
 })
-export class DialogSectionFormGroupComponent implements OnInit {
+export class DialogSectionUpdateFormGroupComponent implements OnInit {
   sectionDialogForm!: FormGroup;
   @Output() sectionDialog = new EventEmitter<Section>;
 
-  constructor(public dialogRef: MatDialogRef<DialogSectionFormGroupComponent>,
+  constructor(public dialogRef: MatDialogRef<DialogSectionUpdateFormGroupComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
     this.sectionDialogForm = data.formSection;
   }
@@ -25,7 +25,7 @@ export class DialogSectionFormGroupComponent implements OnInit {
   }
 
   onAddSection() {
-    this.dialogRef.close({event:'close',data:this.sectionDialogForm});
+    this.dialogRef.close({ event: 'close', data: this.sectionDialogForm });
   }
 
 }

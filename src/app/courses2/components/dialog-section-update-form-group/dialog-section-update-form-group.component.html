@@ -1,9 +1,9 @@
-<h1 mat-dialog-title>New Section</h1>
+<h1 mat-dialog-title>Update Section</h1>
 <form [formGroup]="sectionDialogForm">
   <div mat-dialog-content>
     <mat-form-field appearance="outline" hidden>
       <mat-label>Title</mat-label>
-      <input type="text" matInput formControlName="id">
+      <input type="number" matInput formControlName="id">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
@@ -11,8 +11,9 @@
     </mat-form-field>
   </div>
   <div mat-dialog-actions>
-    <button mat-raised-button color="warn" type="reset" >Reset</button>
-    <button mat-raised-button color="accent" mat-dialog-close >Exit</button>
-    <button mat-raised-button color="primary" [disabled]="sectionDialogForm.invalid" (click)="onAddSection()" >Save</button>
+    <button mat-raised-button color="warn" type="reset">Reset</button>
+    <button mat-raised-button color="accent" mat-dialog-close>Exit</button>
+    <button mat-raised-button color="primary" [disabled]="sectionDialogForm.invalid"
+      (click)="onAddSection()">Update</button>
   </div>
 </form>

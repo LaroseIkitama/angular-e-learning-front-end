@@ -1,7 +1,27 @@
-.mat-card{
+.mat-card {
   margin-top: 15px;
-  .mat-card-header{
+
+  .mat-card-header {
     font-size: 20px;
     font-weight: bolder;
+    margin-bottom: 10px;
   }
+
+  ul li {
+    margin-left: 10px;
+  }
+}
+
+ul li {
+  list-style-type: none;
+}
+.btn{
+  border: none;
+  background: none;
+}
+.btn-delete{
+  color: rgb(146, 12, 12);
+}
+.btn-edit{
+  color: #2c3344;
 }

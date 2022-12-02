@@ -19,7 +19,7 @@ export class NewCourseComponent implements OnInit {
         'description': new FormControl(null, Validators.required),
         'level': new FormControl(null, Validators.required),
         'duration': new FormControl(null, Validators.required),
-        'userId': new FormControl(null),
+        'userId': new FormControl(3),
         'categoryId': new FormControl(null, Validators.required),
         'status': new FormControl(0),
       }),
