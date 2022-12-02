@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>New Chapter</h1>
+<form [formGroup]="chapterDialogForm">
+  <div mat-dialog-content>
+    <!-- Id -->
+    <mat-form-field appearance="outline" hidden>
+      <mat-label>Id</mat-label>
+      <input type="number" matInput formControlName="id">
+    </mat-form-field>
+    <!-- Title -->
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput formControlName="title">
+    </mat-form-field>
+    <!-- Video -->
+
+    <input type="file" accept="image/*" formControlName="video">
+    <!-- Section Id -->
+    <mat-form-field appearance="outline" hidden>
+      <mat-label>Section Id</mat-label>
+      <input type="number" matInput formControlName="sectionId">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" type="reset">Reset</button>
+    <button mat-raised-button color="accent" mat-dialog-close>Exit</button>
+    <button mat-raised-button color="primary" [disabled]="chapterDialogForm.invalid"
+      (click)="onAddChapter()">Save</button>
+  </div>
+</form>

@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>New Section</h1>
 <form [formGroup]="sectionDialogForm">
-  <div mat-dialog-content>
+  <div mat-dialog-content formGroupName="section">
     <mat-form-field appearance="outline" hidden>
       <mat-label>Title</mat-label>
       <input type="text" matInput formControlName="id">

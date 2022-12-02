@@ -11,6 +11,7 @@ import { MediaFormGroupComponent } from './components/media-form-group/media-for
 import { PublishFormGroupComponent } from './components/publish-form-group/publish-form-group.component';
 import { DialogSectionFormGroupComponent } from './components/dialog-section-form-group/dialog-section-form-group.component';
 import { DialogSectionUpdateFormGroupComponent } from './components/dialog-section-update-form-group/dialog-section-update-form-group.component';
+import { DialogChapterFormGroupComponent } from './components/dialog-chapter-form-group/dialog-chapter-form-group.component';
 
 
 
@@ -24,7 +25,8 @@ import { DialogSectionUpdateFormGroupComponent } from './components/dialog-secti
     MediaFormGroupComponent,
     PublishFormGroupComponent,
     DialogSectionFormGroupComponent,
-    DialogSectionUpdateFormGroupComponent
+    DialogSectionUpdateFormGroupComponent,
+    DialogChapterFormGroupComponent
   ],
   imports: [
     CommonModule,

@@ -6,19 +6,29 @@
   </mat-card>
   <ng-container *ngIf="form.value.content.length; else elseTemplate">
     <!-- Content exist -->
-    <ul *ngFor="let section of form.value.content; let i=index">
+    <ul *ngFor="let element of form.value.content; let i=index">
       <li>
         <mat-card>
-          <mat-card-header>Section {{ i+1 }} - {{ section.title}}</mat-card-header>
+          <mat-card-header>Section {{ i+1 }} - {{ element.section.title}}</mat-card-header>
           <mat-card-content>
-            <ul>
-              <li>Chapter 1 - Introduction</li>
-              <li>Chapter 2 - Install your environment</li>
-            </ul>
+            <ng-container *ngIf="element.chapters.length else elseTemplate">
+              <ul *ngFor="let chapter of element.chapters; let j=index">
+                <li>Chapter {{ j+1 }} - {{ chapter.title }}</li>
+              </ul>
+            </ng-container>
+            <ng-template #elseTemplate>
+              pas de content chapiter
+            </ng-template>
+
           </mat-card-content>
           <mat-card-actions>
-            <button class="btn btn-delete" (click)="onDelete(i)"><mat-icon>delete</mat-icon></button>
-            <button class="btn btn-edit" (click)="onUpdate(i)"><mat-icon>create</mat-icon></button>
+            <button class="btn btn-delete" (click)="onDelete(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button class="btn btn-edit" (click)="onUpdate(i)">
+              <mat-icon>create</mat-icon>
+            </button>
+            <button mat-raised-button color="primary" (click)="addChapter(i)">Add chapter</button>
           </mat-card-actions>
         </mat-card>
       </li>

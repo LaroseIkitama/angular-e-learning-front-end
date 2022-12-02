@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Optional, Inject, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Section } from 'src/app/core/models/section.model';
 
@@ -19,8 +19,11 @@ export class DialogSectionUpdateFormGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.sectionDialogForm = new FormGroup({
-      id: new FormControl(null),
-      title: new FormControl(null, Validators.required)
+      'section': new FormGroup({
+        'id': new FormControl(null),
+        'title': new FormControl(null, Validators.required),
+      }),
+      'chapters': new FormArray([])
     });
   }
 

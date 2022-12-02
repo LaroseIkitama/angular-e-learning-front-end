@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogChapterFormGroupComponent } from '../dialog-chapter-form-group/dialog-chapter-form-group.component';
 import { DialogSectionFormGroupComponent } from '../dialog-section-form-group/dialog-section-form-group.component';
 import { DialogSectionUpdateFormGroupComponent } from '../dialog-section-update-form-group/dialog-section-update-form-group.component';
 
@@ -15,6 +16,7 @@ export class ContentFormGroupComponent implements OnInit {
 
   sectionInputForm!: FormGroup;
   currentSectionForm!: FormGroup;
+  chapterInputForm!: FormGroup;
 
   constructor(private matDialog: MatDialog) { }
 
@@ -32,8 +34,11 @@ export class ContentFormGroupComponent implements OnInit {
 
   addSection() {
     this.sectionInputForm = new FormGroup({
-      id: new FormControl(null),
-      title: new FormControl(null, Validators.required),
+      'section': new FormGroup({
+        'id': new FormControl(null),
+        'title': new FormControl(null, Validators.required),
+      }),
+      'chapters': new FormArray([])
     });
     const dialogRef = this.matDialog.open(DialogSectionFormGroupComponent, {
       width: '40%',
@@ -46,7 +51,12 @@ export class ContentFormGroupComponent implements OnInit {
       this.sectionInputForm = result.data;
       this.form.value.content.push(this.sectionInputForm.value);
       console.log("Formulary de base apres saisie d'information");
-      console.log(this.form.value);
+      console.log(this.form.value.content[0].section.title);
+      for (let element of this.form.value.content) {
+        //console.log(element.section.title);
+        //console.log(element.chapters);
+        console.log(this.form.value.content[0].chapters);
+      }
     });
   }
 
@@ -63,8 +73,11 @@ export class ContentFormGroupComponent implements OnInit {
 
   onUpdate(index: number) {
     this.currentSectionForm = new FormGroup({
-      id: new FormControl(null),
-      title: new FormControl(null, Validators.required),
+      'section': new FormGroup({
+        'id': new FormControl(null),
+        'title': new FormControl(null, Validators.required),
+      }),
+      'chapters': new FormArray([])
     });
     this.currentSectionForm.value.id = this.form.value.content[index].id;
     this.currentSectionForm.value.title = this.form.value.content[index].title;
@@ -80,6 +93,30 @@ export class ContentFormGroupComponent implements OnInit {
       this.form.value.content[index] = this.currentSectionForm.value;
       console.log("Formulary de base apres update d'information");
       console.log(this.form.value);
+    });
+  }
+
+  addChapter(index: number) {
+
+    this.chapterInputForm = new FormGroup({
+      'id': new FormControl(null),
+      'title': new FormControl(null, Validators.required),
+      'video': new FormControl(null, Validators.required),
+      'sectionId': new FormControl(null)
+    });
+
+    const dialogRef = this.matDialog.open(DialogChapterFormGroupComponent, {
+      width: '100%',
+      enterAnimationDuration: '500ms',
+      data: { formChapter: this.chapterInputForm }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result.data.value);
+
+      this.chapterInputForm = result.data;
+      this.form.value.content[index].chapters.push(this.chapterInputForm.value);
+      console.log(this.form.value.content[index].chapters);
     });
   }
 }
