@@ -15,6 +15,8 @@ export class DialogSectionUpdateFormGroupComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<DialogSectionUpdateFormGroupComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
     this.sectionDialogForm = data.formSection;
+    console.log('UPDATE SECTION TIREEEEERR');
+    console.log(data.titleShared);
   }
 
   ngOnInit(): void {

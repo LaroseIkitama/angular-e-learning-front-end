@@ -11,9 +11,12 @@
       <mat-label>Title</mat-label>
       <input type="text" matInput formControlName="title">
     </mat-form-field>
-    <!-- Video -->
+    <!-- Content text -->
 
-    <input type="file" accept="image/*" formControlName="video">
+    <mat-form-field appearance="outline">
+      <mat-label>Content</mat-label>
+      <textarea matInput placeholder="Type the content" formControlName="contentText"></textarea>
+    </mat-form-field>
     <!-- Section Id -->
     <mat-form-field appearance="outline" hidden>
       <mat-label>Section Id</mat-label>

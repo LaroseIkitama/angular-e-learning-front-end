@@ -3,9 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewCategoryComponent } from './categories/components/new-category/new-category.component';
 import { CategoryListComponent } from './categories/components/category-list/category-list.component';
 import { UpdateCategoryComponent } from './categories/components/update-category/update-category.component';
-import { NewChapterComponent } from './chapters/components/new-chapter/new-chapter.component';
-import { ChapterListComponent } from './chapters/components/chapter-list/chapter-list.component';
-import { SingleChapterComponent } from './chapters/components/single-chapter/single-chapter.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NewCourseComponent } from './courses2/components/new-course/new-course.component';
@@ -25,12 +22,6 @@ const routes: Routes = [
   { path: 'update-section/:id', component: UpdateSectionComponent },
   { path: 'new-section', component: NewSectionComponent },
   { path: 'section-list', component: SectionListComponent },
-
-
-
-  { path: 'details-chapter/:id', component: SingleChapterComponent },
-  { path: 'new-chapter', component: NewChapterComponent },
-  { path: 'chapter-list', component: ChapterListComponent },
 
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },

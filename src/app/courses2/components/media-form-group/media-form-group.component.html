@@ -1,12 +1,24 @@
 <div class="formular_content">
- <!--  <div id="media" [formGroup]="form">
-    <mat-form-field appearance="outline" hidden formGroupName="media">
+  <div id="media" [formGroup]="form">
+    <mat-card formGroupName="media">
+      <mat-card-header>
+        <mat-card-title>Image of course</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <img mat-card-image [src]="" [alt]="" formControlName="image">
+      </mat-card-content>
+      <mat-card-actions>
+        <input type="file" accept="image/*">
+      </mat-card-actions>
+    </mat-card>
+    <!-- <mat-form-field appearance="outline" hidden formGroupName="media">
       <mat-label>Image</mat-label>
+
       <input type="file" accept="image/*" formControlName="id">
-    </mat-form-field>
+    </mat-form-field> -->
   </div>
-   -->
-   <div class="action-buttons">
+
+  <div class="action-buttons">
     <button mat-raised-button color="primary" matStepperPrevious>Back</button>
     <button mat-raised-button color="primary" (click)="step3Submitted()" matStepperNext>Next</button>
   </div>

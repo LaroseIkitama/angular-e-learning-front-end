@@ -20,7 +20,7 @@ export class DialogChapterFormGroupComponent implements OnInit {
     this.chapterDialogForm = new FormGroup({
       'id': new FormControl(null),
       'title': new FormControl(null, Validators.required),
-      'video': new FormControl(null, Validators.required),
+      'contentText': new FormControl(null, Validators.required),
       'sectionId': new FormControl(null)
     });
   }
