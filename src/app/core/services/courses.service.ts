@@ -13,7 +13,6 @@ const apiUrl ='http://localhost:3000/courses';
   providedIn: 'root'
 })
 export class CoursesService {
-  courses: Course[] = [];
 
   constructor(private http: HttpClient) { }
 

@@ -19,10 +19,16 @@
   }
 }
 
+.mat-card {
+  text-align: center;
+  margin-top: 70px;
 
-#banniere{
- background-color: red;
- height: 250px;
- background-image: url('../../assets//images/b2.png');
- background-size: cover ;
+  .mat-card-title {
+    font-size: 30px;
+    font-weight: bolder;
+  }
+
+  .mat-card-content {
+    font-size: 20px;
+  }
 }

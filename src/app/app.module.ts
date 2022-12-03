@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { Courses2Module } from './courses2/courses2.module';
 import { SectionsModule } from './sections/sections.module';
+import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SectionsModule } from './sections/sections.module';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    TrainerDashboardComponent
   ],
   imports: [
     BrowserModule,

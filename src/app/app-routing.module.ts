@@ -10,6 +10,7 @@ import { CourseListComponent } from './courses2/components/course-list/course-li
 import { UpdateSectionComponent } from './sections/components/update-section/update-section.component';
 import { NewSectionComponent } from './sections/components/new-section/new-section.component';
 import { SectionListComponent } from './sections/components/section-list/section-list.component';
+import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
 
 const routes: Routes = [
   { path: 'new-course', component: NewCourseComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
 
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'trainer-dashboard', component: TrainerDashboardComponent },
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];

@@ -5,7 +5,7 @@ justify-content: space-around;
 
 .mat-card {
   width: 25%;
-  margin-top: 20px;
+  margin-top: 40px;
   .mat-card-title{
     text-align: left;
     font-size: 17px;
@@ -17,4 +17,10 @@ justify-content: space-around;
     height: 250px;
     background: red;
   }
+}
+
+.action-buttons{
+  display: flex;
+  justify-content: space-between;
+ margin-top: 50px;
 }

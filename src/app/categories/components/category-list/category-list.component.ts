@@ -38,14 +38,12 @@ export class CategoryListComponent implements OnInit {
   deleteCategory(category: Category) {
     let confirmation = confirm("Are you sure? You want to delete this category?");
     if (confirmation) {
-      console.log("category deleted successfully");
-      this.categoriesService.deleteCategory(category.id).subscribe(() => {
-        window.location.reload();
-      });
-
+      this.categoriesService.deleteCategory(category.id).subscribe(() => { });
+      window.location.reload();
     }
   }
   applyFilter(event: Event) {
+    window.location.reload();
     const filterValue = (event.target as HTMLInputElement).value;
 
     this.dataSource.filter = filterValue.trim().toLowerCase();

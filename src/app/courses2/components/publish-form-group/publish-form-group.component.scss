@@ -1,0 +1,30 @@
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.mat-card {
+  margin-top: 50px;
+
+  .mat-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+
+    .mat-card-title {
+      color: #DD4606;
+    }
+
+    #done {
+      color: #10D65F;
+    }
+  }
+
+  .mat-card-content {
+    text-align: center;
+    font-size: 18px;
+    padding: 7px;
+  }
+}

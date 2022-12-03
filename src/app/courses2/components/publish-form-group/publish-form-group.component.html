@@ -1,11 +1,32 @@
 <div class="formular_content">
   <ng-container *ngIf="formSubmitted===true; else elseTemplate">
-    Formulary submitted successfully
+    <mat-card class="mat-elevation-z8">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon id="done">done_all</mat-icon>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        Course successfully publish
+      </mat-card-content>
+    </mat-card>
   </ng-container>
   <ng-template #elseTemplate>
-    Please following the details submitted
+
+    <mat-card class="mat-elevation-z8">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>priority_high</mat-icon>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        Congratulations you did the hardest, now you can either publish your course to make it visible to learners or
+        save it to be able to modify it later.
+      </mat-card-content>
+    </mat-card>
     <div class="action-buttons">
       <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
       <button mat-raised-button color="primary" (click)="submit()">Publish</button>
     </div>
   </ng-template>
