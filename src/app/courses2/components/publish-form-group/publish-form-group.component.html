@@ -1,6 +1,13 @@
 <div class="formular_content">
-  <div class="action-buttons">
-    <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-    <button mat-raised-button color="primary" (click)="submit()">Publish</button>
-  </div>
+  <ng-container *ngIf="formSubmitted===true; else elseTemplate">
+    Formulary submitted successfully
+  </ng-container>
+  <ng-template #elseTemplate>
+    Please following the details submitted
+    <div class="action-buttons">
+      <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary" (click)="submit()">Publish</button>
+    </div>
+  </ng-template>
+
 </div>

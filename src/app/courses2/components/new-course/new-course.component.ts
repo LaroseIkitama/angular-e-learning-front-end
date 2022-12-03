@@ -14,7 +14,7 @@ export class NewCourseComponent implements OnInit {
   ngOnInit(): void {
     this.courseForm = new FormGroup({
       'information': new FormGroup({
-        'id': new FormControl(null),
+        'id': new FormControl(),
         'title': new FormControl(null, Validators.required),
         'description': new FormControl(null, Validators.required),
         'level': new FormControl(null, Validators.required),

@@ -12,6 +12,7 @@ export class MediaFormGroupComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+   console.log("Media = ",this.form.value.media);
 
   }
 

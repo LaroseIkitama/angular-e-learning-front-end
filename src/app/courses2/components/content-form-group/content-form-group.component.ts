@@ -23,9 +23,6 @@ export class ContentFormGroupComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  step2Submitted() {
-
-  }
   onDialog() {
     this.matDialog.open(DialogSectionFormGroupComponent, {
       width: '40%',
@@ -77,7 +74,7 @@ export class ContentFormGroupComponent implements OnInit {
   onUpdate(index: number) {
     this.currentSectionForm = new FormGroup({
       'section': new FormGroup({
-        'id': new FormControl(null),
+        'id': new FormControl(),
         'title': new FormControl(null, Validators.required),
       }),
       'chapters': new FormArray([])
@@ -109,7 +106,7 @@ export class ContentFormGroupComponent implements OnInit {
   addChapter(index: number) {
 
     this.chapterInputForm = new FormGroup({
-      'id': new FormControl(null),
+      'id': new FormControl(),
       'title': new FormControl(null, Validators.required),
       'contentText': new FormControl(null, Validators.required),
       'sectionId': new FormControl(null)
@@ -129,6 +126,16 @@ export class ContentFormGroupComponent implements OnInit {
         this.form.value.content[index].chapters.push(this.chapterInputForm.value);
         console.log(this.form.value.content[index].chapters);
       }
+    });
+  }
+
+  step2Submitted() {
+
+    (<FormArray>this.form.get('content')).controls.forEach(() => {
+      (<any>Object).values().forEach((control: FormControl) => {
+          control.markAsTouched();
+          control.updateValueAndValidity();
+      })
     });
   }
 }

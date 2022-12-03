@@ -12,6 +12,7 @@ import { PublishFormGroupComponent } from './components/publish-form-group/publi
 import { DialogSectionFormGroupComponent } from './components/dialog-section-form-group/dialog-section-form-group.component';
 import { DialogSectionUpdateFormGroupComponent } from './components/dialog-section-update-form-group/dialog-section-update-form-group.component';
 import { DialogChapterFormGroupComponent } from './components/dialog-chapter-form-group/dialog-chapter-form-group.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -31,6 +32,7 @@ import { DialogChapterFormGroupComponent } from './components/dialog-chapter-for
   imports: [
     CommonModule,
     RouterModule,
+    HttpClientModule,
     MaterialModule
   ],
   exports:[

@@ -1,11 +1,15 @@
 #media {
-
+display: flex;
+justify-content: space-around;
 }
 
 .mat-card {
   width: 25%;
+  margin-top: 20px;
   .mat-card-title{
     text-align: left;
+    font-size: 17px;
+    font-weight: bolder;
   }
   mat-card-content {
     padding: 10px;
