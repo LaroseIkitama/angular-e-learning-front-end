@@ -19,10 +19,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 
 
-import {MatTreeModule} from '@angular/material/tree';
+import { MatTreeModule } from '@angular/material/tree';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 
@@ -46,9 +47,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatCardModule,
     MatDialogModule,
     MatTreeModule,
-    MatSelectModule
-
-
+    MatSelectModule,
+    MatProgressBarModule
   ]
 })
 

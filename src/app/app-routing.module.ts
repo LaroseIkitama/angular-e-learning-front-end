@@ -11,6 +11,8 @@ import { UpdateSectionComponent } from './sections/components/update-section/upd
 import { NewSectionComponent } from './sections/components/new-section/new-section.component';
 import { SectionListComponent } from './sections/components/section-list/section-list.component';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
+import { CertificateComponent } from './courses2/components/certificate/certificate.component';
+import { FormationComponent } from './courses2/components/formation/formation.component';
 
 const routes: Routes = [
   { path: 'new-course', component: NewCourseComponent },
@@ -27,6 +29,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'trainer-dashboard', component: TrainerDashboardComponent },
+  { path: 'certificate', component: CertificateComponent },
+  { path: 'formation', component: FormationComponent },
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];

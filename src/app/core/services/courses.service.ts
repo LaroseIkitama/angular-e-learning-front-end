@@ -7,7 +7,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
-const apiUrl ='http://localhost:3000/courses';
+const apiUrl = 'http://localhost:3000/courses';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +42,9 @@ export class CoursesService {
   private handleError(error: Error, errorValue: any) {
     console.error(error);
     return of(errorValue);
+  }
+
+  getCoursesPublished(): Observable<Course[]> {
+    return this.http.get<Course[]>(`${apiUrl}?status_gte=1`);
   }
 }

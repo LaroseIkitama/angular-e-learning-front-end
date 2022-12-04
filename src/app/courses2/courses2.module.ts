@@ -13,6 +13,8 @@ import { DialogSectionFormGroupComponent } from './components/dialog-section-for
 import { DialogSectionUpdateFormGroupComponent } from './components/dialog-section-update-form-group/dialog-section-update-form-group.component';
 import { DialogChapterFormGroupComponent } from './components/dialog-chapter-form-group/dialog-chapter-form-group.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CertificateComponent } from './components/certificate/certificate.component';
+import { FormationComponent } from './components/formation/formation.component';
 
 
 
@@ -27,7 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
     PublishFormGroupComponent,
     DialogSectionFormGroupComponent,
     DialogSectionUpdateFormGroupComponent,
-    DialogChapterFormGroupComponent
+    DialogChapterFormGroupComponent,
+    CertificateComponent,
+    FormationComponent
   ],
   imports: [
     CommonModule,
