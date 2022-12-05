@@ -1,5 +1,5 @@
 <div class="container-fluid page">
-  <div class="page__box p-3 mt-2">New course</div>
+  <div class="page__box p-3 mt-2">Nouveau Cours</div>
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data-list">
       <div class="stepper_content">
@@ -13,17 +13,17 @@
           </mat-step>
           <!-- step-2 -->
           <mat-step formGroupName="content" [stepControl]="courseForm.get('content')!">
-            <ng-template matStepLabel>Content</ng-template>
+            <ng-template matStepLabel>Contenu</ng-template>
             <app-content-form-group [form]="courseForm"></app-content-form-group>
           </mat-step>
           <!-- step-3 -->
           <mat-step formGroupName="media" [stepControl]="courseForm.get('media')!">
-            <ng-template matStepLabel>Media</ng-template>
+            <ng-template matStepLabel>Média</ng-template>
             <app-media-form-group [form]="courseForm"></app-media-form-group>
           </mat-step>
           <!-- step-4 -->
           <mat-step>
-            <ng-template matStepLabel>Publish</ng-template>
+            <ng-template matStepLabel>Publier</ng-template>
             <app-publish-form-group [form]="courseForm"></app-publish-form-group>
           </mat-step>
 

@@ -54,7 +54,6 @@ export class CourseListComponent implements OnInit {
   }
 
   applyFilter(event: Event) {
-    window.location.reload();
     const filterValue = (event.target as HTMLInputElement).value;
 
     this.dataSource.filter = filterValue.trim().toLowerCase();

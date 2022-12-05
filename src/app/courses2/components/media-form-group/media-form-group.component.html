@@ -2,14 +2,14 @@
   <div id="media" [formGroup]="form">
     <mat-card formGroupName="media">
       <mat-card-header>
-       <mat-card-title>Add image of course</mat-card-title>
+       <mat-card-title>Ajouter une image</mat-card-title>
       </mat-card-header>
       <mat-card-actions>
         <input type="file" accept="image/*" formControlName="image">
       </mat-card-actions>
     </mat-card>
     <mat-card formGroupName="media">
-      <mat-card-header><mat-card-title>Add video of course</mat-card-title></mat-card-header>
+      <mat-card-header><mat-card-title>Ajouter une vidéo</mat-card-title></mat-card-header>
       <mat-card-actions>
         <input type="file" accept="video/*" formControlName="video">
       </mat-card-actions>
@@ -17,7 +17,7 @@
   </div>
 
   <div class="action-buttons">
-    <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-    <button mat-raised-button color="primary" (click)="step3Submitted()" matStepperNext>Next</button>
+    <button mat-raised-button color="primary" matStepperPrevious>Précédent</button>
+    <button mat-raised-button color="primary" (click)="step3Submitted()" matStepperNext>Suivant</button>
   </div>
 </div>

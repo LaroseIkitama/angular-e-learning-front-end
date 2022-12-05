@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>New Chapter</h1>
+<h1 mat-dialog-title>Nouveau Chapitre</h1>
 <form [formGroup]="chapterDialogForm">
   <div mat-dialog-content>
     <!-- Id -->
@@ -8,25 +8,25 @@
     </mat-form-field>
     <!-- Title -->
     <mat-form-field appearance="outline">
-      <mat-label>Title</mat-label>
+      <mat-label>Titre</mat-label>
       <input type="text" matInput formControlName="title">
     </mat-form-field>
     <!-- Content text -->
 
     <mat-form-field appearance="outline">
-      <mat-label>Content</mat-label>
+      <mat-label>Contenu</mat-label>
       <textarea matInput placeholder="Type the content" formControlName="contentText"></textarea>
     </mat-form-field>
     <!-- Section Id -->
     <mat-form-field appearance="outline" hidden>
-      <mat-label>Section Id</mat-label>
+      <mat-label>Id Section</mat-label>
       <input type="number" matInput formControlName="sectionId">
     </mat-form-field>
   </div>
   <div mat-dialog-actions>
-    <button mat-raised-button color="warn" type="reset">Reset</button>
-    <button mat-raised-button color="accent" mat-dialog-close>Exit</button>
+    <button mat-raised-button color="warn" type="reset">Supprimer</button>
+    <button mat-raised-button color="accent" mat-dialog-close>Sortir</button>
     <button mat-raised-button color="primary" [disabled]="chapterDialogForm.invalid"
-      (click)="onAddChapter()">Save</button>
+      (click)="onAddChapter()">Enregistrer</button>
   </div>
 </form>
