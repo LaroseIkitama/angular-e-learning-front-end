@@ -36,11 +36,11 @@
           <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Statut</th>
             <td mat-cell *matCellDef="let row">
-              <ng-container *ngIf="row.status===1 else elseTemplate">
-                Publié
+              <ng-container *ngIf="row.status==1 else elseTemplate">
+               <span style="color:#DD4606;">Publié</span>
               </ng-container>
               <ng-template #elseTemplate>
-                Brouillon
+                <span style="color:#DD4606;">Brouillon</span>
               </ng-template>
             </td>
           </ng-container>

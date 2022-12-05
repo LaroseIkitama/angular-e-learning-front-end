@@ -1,12 +1,41 @@
+<div id="banniere">
 
-      <div id="banniere"></div>
-      <div>
-        <h2>Categories</h2>
-        <div>
-          <p>La formation en ligne vous donne une  nouvelle possibilité de vous  former aux metiers qui  vous passionne.</p>
-          <button>VOIR TOUT</button>
+</div>
+<div *ngFor="let course of courses">
+  <mat-card class="mat-elevation-z8">
+    <div id="image">
+      <img *ngIf="course.categoryId==2" src="assets/images/development.jpg" alt="image du cours">
+      <img *ngIf="course.categoryId==3" src="assets/images/securité.jpg" alt="image du cours">
+    </div>
+    <div id="information">
+      <h4>{{ course.title | titlecase }}</h4>
+      <h4 class="categorie" *ngFor="let category of categories"><span *ngIf="category.id==course.categoryId">{{
+          category.name }}</span>
+      </h4>
+      <div id="levelDuration">
+        <div class="levelDuration_">
+          <mat-icon>signal_cellular_alt</mat-icon>
+          <p>{{ course.level }}</p>
+        </div>
+        <div class="levelDuration_">
+          <mat-icon>schedule</mat-icon>
+          <p>{{ course.duration }}</p>
+        </div>
+        <div class="levelDuration_ color" *ngIf="course.categoryId==2">
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
+        </div>
+        <div class="levelDuration_ color" *ngIf="course.categoryId==3">
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
         </div>
       </div>
-      <div>
+      <button mat-raised-button color="primary" (click)="onDetails(course.id)">Voir détails</button>
 
-      </div>
+    </div>
+  </mat-card>
+</div>

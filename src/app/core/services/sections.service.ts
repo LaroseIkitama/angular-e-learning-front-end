@@ -7,15 +7,14 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
-const apiUrl ='http://localhost:3000/sections';
+const apiUrl = 'http://localhost:3000/sections';
 
 @Injectable({
-  providedIn:'root'
+  providedIn: 'root'
 })
 
 export class SectionsService {
 
-  sections:Section[]=[];
 
   constructor(private http: HttpClient) { }
 
@@ -37,6 +36,14 @@ export class SectionsService {
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, []))
     );
+  }
+
+  getAllSectionOfCOurse(id: number): Observable<Section[]> {
+    return this.http.get<Section[]>(`http://localhost:3000/courses/${id}/sections`).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, []))
+    );
+
   }
 
   private log(response: Section[] | Section | undefined) {

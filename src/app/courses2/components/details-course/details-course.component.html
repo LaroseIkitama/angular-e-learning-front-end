@@ -1,16 +1,57 @@
-<div id="content">
-  <div class="left">
-    <div class="content_image">
-      <img src="assets/images/development.jpg" alt="">
+<div class="content">
+  <div class="mat-elevation-z8">
+    <div class="content-image">
+      <h3>{{ course.title | titlecase }}</h3>
+      <div class="levelDuration">
+        <div class="levelDuration_">
+          <mat-icon>signal_cellular_alt</mat-icon>
+          <p>{{ course.level }}</p>
+        </div>
+        <div class="levelDuration_">
+          <mat-icon>schedule</mat-icon>
+          <p>{{ course.duration }}</p>
+        </div>
+        <div class="levelDuration_ color" *ngIf="course.categoryId==2">
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
+        </div>
+        <div class="levelDuration_ color" *ngIf="course.categoryId==3">
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
+          <mat-icon>grade</mat-icon>
+        </div>
+        <button mat-raised-button color="primary">Débuter la formation</button>
+      </div>
     </div>
     <div class="content_description">
-
+      <div class="trainer-comment">
+        <h3> <span style="font-weight:bold ;">Formateur</span> : Larose</h3>
+        <button mat-raised-button color="accent" (click)="commentsView(course.id)">Voir commentaires</button>
+      </div>
+      <h2> <span style="font-weight:bold ;">Description</span> : </h2>
+      <p>{{ course.description }}</p>
     </div>
     <div class="content_program">
-
+      <h1><span style="font-weight:bold ;">Tables des matières</span> </h1>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+        *ngFor="let section of sections;">
+        <mat-expansion-panel-header *ngIf="section.courseId==course.id">
+          <mat-panel-title>
+            <span style="font-weight:bold ; color: brown;">
+              <mat-icon>flag</mat-icon>
+            </span>
+          </mat-panel-title>
+          <mat-panel-description>
+            <span style="font-weight:bold ;"> {{section.title}} </span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ul *ngFor="let chapter of chapters">
+          <li *ngIf="chapter.sectionId==section.id">{{ chapter.title | titlecase }}</li>
+        </ul>
+      </mat-expansion-panel>
     </div>
-  </div>
-  <div class="right">
-
   </div>
 </div>

@@ -13,6 +13,8 @@ import { SectionListComponent } from './sections/components/section-list/section
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
 import { CertificateComponent } from './courses2/components/certificate/certificate.component';
 import { FormationComponent } from './courses2/components/formation/formation.component';
+import { DetailsCourseComponent } from './courses2/components/details-course/details-course.component';
+import { CommentsComponent } from './courses2/components/comments/comments.component';
 
 const routes: Routes = [
   { path: 'new-course', component: NewCourseComponent },
@@ -31,6 +33,8 @@ const routes: Routes = [
   { path: 'trainer-dashboard', component: TrainerDashboardComponent },
   { path: 'certificate', component: CertificateComponent },
   { path: 'formation', component: FormationComponent },
+  { path: 'details-course/:id', component: DetailsCourseComponent },
+  { path: 'comments-course/:id', component: CommentsComponent },
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];

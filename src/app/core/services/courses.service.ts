@@ -45,6 +45,7 @@ export class CoursesService {
   }
 
   getCoursesPublished(): Observable<Course[]> {
-    return this.http.get<Course[]>(`${apiUrl}?status_gte=1`);
+    return this.http.get<Course[]>("http://localhost:3000/courses?status_gte=1");
   }
+
 }

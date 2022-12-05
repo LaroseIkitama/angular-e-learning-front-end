@@ -15,6 +15,9 @@ import { DialogChapterFormGroupComponent } from './components/dialog-chapter-for
 import { HttpClientModule } from '@angular/common/http';
 import { CertificateComponent } from './components/certificate/certificate.component';
 import { FormationComponent } from './components/formation/formation.component';
+import { DetailsCourseComponent } from './components/details-course/details-course.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { TakeCourseComponent } from './components/take-course/take-course.component';
 
 
 
@@ -31,7 +34,10 @@ import { FormationComponent } from './components/formation/formation.component';
     DialogSectionUpdateFormGroupComponent,
     DialogChapterFormGroupComponent,
     CertificateComponent,
-    FormationComponent
+    FormationComponent,
+    DetailsCourseComponent,
+    CommentsComponent,
+    TakeCourseComponent
   ],
   imports: [
     CommonModule,
@@ -39,14 +45,20 @@ import { FormationComponent } from './components/formation/formation.component';
     HttpClientModule,
     MaterialModule
   ],
-  exports:[
+  exports: [
     NewCourseComponent,
     CourseListComponent,
     UpdateCourseComponent,
     InformationFormGroupComponent,
     ContentFormGroupComponent,
     MediaFormGroupComponent,
-    PublishFormGroupComponent
+    PublishFormGroupComponent,
+    DialogSectionFormGroupComponent,
+    DialogSectionUpdateFormGroupComponent,
+    DialogChapterFormGroupComponent,
+    CertificateComponent,
+    FormationComponent,
+    DetailsCourseComponent
   ]
 })
 export class Courses2Module { }

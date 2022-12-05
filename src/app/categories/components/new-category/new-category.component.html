@@ -1,5 +1,5 @@
 <div class="container-fluid page">
-  <div class="page__box p-3 mt-2">Create category</div>
+  <div class="page__box p-3 mt-2">Créer une catégorie</div>
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data-list">
       <div class="form-card">
@@ -10,13 +10,13 @@
             <input matInput type="number" formControlName="id">
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
+            <mat-label>Nom</mat-label>
             <input matInput type="text" formControlName="name">
           </mat-form-field>
           <div class="action-buttons">
-            <button mat-raised-button color="warn" type="reset">Reset</button>
+            <button mat-raised-button color="warn" type="reset">Supprimer</button>
             <button mat-raised-button color="primary" type="submit" (click)="onSubmitForm()"
-              [disabled]="categoryForm.invalid">Save</button>
+              [disabled]="categoryForm.invalid">Enregister</button>
           </div>
         </form>
       </div>

@@ -4,5 +4,5 @@ export class Chapter {
   id!: number;
   title!: string;
   contentText!: string;
-  section!: Section;
+  sectionId!: number;
 }

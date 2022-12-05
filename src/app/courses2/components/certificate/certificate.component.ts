@@ -31,12 +31,12 @@ export class CertificateComponent implements OnInit {
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
     html2canvas(DATA).then((canvas: { height: number; width: number; toDataURL: (arg0: string) => any; }) => {
-      let fileWidth = 208;
+      let fileWidth = 420;
       let fileHeight = (canvas.height * fileWidth) / canvas.width;
       const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
+      let PDF = new jsPDF('l', 'mm', 'a3');
       let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.addImage(FILEURI, 'PNG', 0, position,fileWidth, fileHeight);
       PDF.save('angular-demo.pdf');
     });
   }
