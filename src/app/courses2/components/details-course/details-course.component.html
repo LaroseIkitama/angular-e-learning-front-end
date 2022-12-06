@@ -1,5 +1,5 @@
 <div class="content">
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8 elementContent">
     <div class="content-image">
       <h3>{{ course.title | titlecase }}</h3>
       <div class="levelDuration">
@@ -38,14 +38,14 @@
       <h1><span style="font-weight:bold ;">Tables des matières</span> </h1>
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
         *ngFor="let section of sections;">
-        <mat-expansion-panel-header *ngIf="section.courseId==course.id">
+        <mat-expansion-panel-header *ngIf="section.courseId==course.id" style="background:#848588;">
           <mat-panel-title>
             <span style="font-weight:bold ; color: brown;">
               <mat-icon>flag</mat-icon>
             </span>
           </mat-panel-title>
           <mat-panel-description>
-            <span style="font-weight:bold ;"> {{section.title}} </span>
+            <span style="font-weight:bolder ; font-size: 17px; color: white;"> {{section.title}} </span>
           </mat-panel-description>
         </mat-expansion-panel-header>
         <ul *ngFor="let chapter of chapters">

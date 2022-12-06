@@ -1,11 +1,12 @@
 .content {
-  margin-left: 200px;
-  margin-right: 50px;
-  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
+}
+.elementContent{
   width: 70%;
 }
-
 .content-image {
   padding: 10px;
   h3 {

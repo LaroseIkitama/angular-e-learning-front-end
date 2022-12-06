@@ -15,6 +15,7 @@ import { SectionsService } from 'src/app/core/services/sections.service';
   styleUrls: ['./take-course.component.scss']
 })
 export class TakeCourseComponent implements OnInit {
+  panelOpenState = false;
   course = new Course();
   sections!: Section[];
   chapters!: Chapter[];

@@ -1,15 +1,51 @@
-<div class="progressBarContent">
-  <mat-progress-bar  mode="determinate" value="{{ totalChaptersLength }}" aria-placeholder="text"></mat-progress-bar>
-  <div class="textOfPercentage">{{ totalChaptersLength }}%</div>
+<div class="contentElement">
+  <div class="contentReader mat-elevation-z8">
+    <!-- Progress bar -->
+    <div class="progressBarContent">
+      <mat-progress-bar mode="determinate" value="20" color="primary"></mat-progress-bar>
+      <div class="textOfPercentage">20%</div>
+      <!-- <mat-progress-bar mode="determinate" value="{{ totalChaptersLength }}" color="primary"></mat-progress-bar>
+      <div class="textOfPercentage">{{ totalChaptersLength }}%</div> -->
+    </div>
+    <!-- Show Chapters and Sections -->
+    <mat-drawer-container>
+      <mat-drawer mode="side" opened="true">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+          *ngFor="let section of sections;">
+          <mat-expansion-panel-header *ngIf="section.courseId==course.id" style="background:#848588;">
+            <mat-panel-description>
+              <span style="font-weight:bolder ; font-size: 17px; color: white;"> {{section.title}} </span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <ul *ngFor="let chapter of chapters">
+            <li *ngIf="chapter.sectionId==section.id"> {{ chapter.title | titlecase }} <span *ngIf="chapter.id==1" style="color: #10D65F;"><mat-icon>check_circle</mat-icon></span></li>
+          </ul>
+        </mat-expansion-panel>
+      </mat-drawer>
+      <mat-drawer-content>
+        <!-- <div *ngFor="let chapter of chapters">
+          <p>{{ chapter.content }} </p>
+        </div> -->
+        <div>
+          <h2>Comprennez la difference entre HTML et CSS</h2>
+
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum voluptates corrupti dolore perspiciatis tenetur quia vero beatae ea distinctio, inventore incidunt, qui debitis? Laudantium, error provident. Temporibus quia vitae quod.
+          Aspernatur iusto quas ducimus expedita tempora magni quisquam voluptatum. Accusantium, aliquid ipsa porro vitae magni aut quaerat, fugit est rerum qui nobis voluptatibus magnam, ex voluptates. Amet quod iste assumenda.
+          Repellendus numquam, maiores est voluptate non reiciendis enim corporis dolore vero! Eveniet, sunt? Ea, similique eos minima perferendis fugiat adipisci facere. Blanditiis labore autem amet dignissimos. Expedita magni aspernatur fuga?
+          Debitis vero in error dolore nulla eaque, aliquam aperiam, dolorem dolorum numquam voluptates esse eum eveniet impedit quis quam, itaque totam blanditiis aliquid doloribus architecto ab molestiae veniam perspiciatis. Nulla.
+          Aliquam officiis iusto, error atque mollitia accusantium ullam corporis temporibus perferendis dolore fuga fugit? Consectetur eum suscipit ex non expedita alias dolores, laborum ab tempora aut, fugit corrupti. Unde, neque?
+          Quis, iusto iure saepe provident voluptatem nihil itaque eum? Repudiandae vero totam eius tenetur magni! Repudiandae in perspiciatis voluptatem nostrum libero, dolore sunt nam dolor officia labore, ullam nisi voluptatibus?
+          Fugit blanditiis rerum eius atque quasi nobis sint quia dolore possimus molestiae exercitationem nesciunt beatae obcaecati consequatur nostrum, neque ullam ducimus dicta quod delectus quis.
+
+          <h4>Consulter le glossaire de balise HTML</h4>
+
+          Certes, vous démarrez tout juste ce cours, mais rien ne vous empêche de prendre la température et d’avoir une vision globale de ce que vous allez apprendre. Imprimez cette fiche ou gardez-la dans un onglet de votre navigateur pendant que vous apprenez. Cela vous servira de mémo pour assimiler les informations essentielles. Cela dit, cela ne vous permettra pas de faire les exercices ou de passer les quiz sans réfléchir un minimum !
+        </div>
+
+        <div class="content-btn">
+          <button mat-raised-button color="primary">J'ai terminé ce chapitre</button>
+        </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </div>
 </div>
-
-<mat-drawer-container>
-  <mat-drawer mode="side" opened="true">
-    Gauche
-  </mat-drawer>
-  <mat-drawer-content>
-    Contenu
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-
-</mat-drawer-container>

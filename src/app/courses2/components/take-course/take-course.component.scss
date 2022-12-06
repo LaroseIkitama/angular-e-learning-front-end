@@ -1,26 +1,70 @@
-.progressBarContent{
+.contentElement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.contentReader {
+  width: 90%;
+
+}
+
+.progressBarContent {
   display: flex;
   align-items: center;
   align-content: center;
-  height: 60px;
+  height: 40px;
+
+  .mat-progress-bar {
+    height: 20px;
+  }
+
+  .textOfPercentage {
+    position: absolute;
+    padding: 10px;
+    font-size: 15px;
+    color: white;
+    font-weight: bolder;
+  }
 }
-.textOfPercentage{
-  position: absolute;
-  padding: 10px;
-  font-size: 17px;
-  color: white;
-  font-weight: bolder;
+
+.mat-drawer-container {
+  height: 90vh;
 }
-.mat-progress-bar{
-  height: 30px;
+
+.mat-drawer {
+  width: 350px;
+  /*
+  height: 100vh; */
+  padding: 7px;
+
+  .mat-expansion-panel {
+    margin: 5px;
+  }
 }
-:host{
-  display: flex ;
-  flex-direction: column;
-}
-.mat-drawer{
-  width: 300px;
-  background: red;
-}
-.mat-drawer-container{
+
+.mat-drawer-content {
+  padding: 20px;
+  background: white;
+
+  .content-btn {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+    .btn-validate-chapter {
+      background: #0f172a;
+      height: 43px;
+      border-radius: 10px;
+      padding: 5px;
+      font-size: 17px;
+      color: white;
+    }
+
+    .btn-validate-chapter:active {
+      transform: scale(0.98);
+      box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    }
+  }
 }
