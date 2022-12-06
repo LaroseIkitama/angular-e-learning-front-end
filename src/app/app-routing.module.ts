@@ -16,6 +16,8 @@ import { FormationComponent } from './courses2/components/formation/formation.co
 import { DetailsCourseComponent } from './courses2/components/details-course/details-course.component';
 import { CommentsComponent } from './courses2/components/comments/comments.component';
 import { TakeCourseComponent } from './courses2/components/take-course/take-course.component';
+import { LearnerDashboardComponent } from './learner-dashboard/learner-dashboard.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   { path: 'new-course', component: NewCourseComponent },
@@ -34,8 +36,10 @@ const routes: Routes = [
 
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
 
   { path: 'trainer-dashboard', component: TrainerDashboardComponent },
+  { path: 'learner-dashboard', component: LearnerDashboardComponent },
 
   { path: 'certificate', component: CertificateComponent },
   { path: 'formation', component: FormationComponent },

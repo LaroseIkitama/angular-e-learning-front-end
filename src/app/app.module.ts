@@ -16,6 +16,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { Courses2Module } from './courses2/courses2.module';
 import { SectionsModule } from './sections/sections.module';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
+import { LearnerDashboardComponent } from './learner-dashboard/learner-dashboard.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard
     HomeComponent,
     LoginComponent,
     AdminDashboardComponent,
-    TrainerDashboardComponent
+    TrainerDashboardComponent,
+    LearnerDashboardComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
