@@ -1,1 +1,15 @@
-<p>take-course works!</p>
+<div class="progressBarContent">
+  <mat-progress-bar  mode="determinate" value="{{ totalChaptersLength }}" aria-placeholder="text"></mat-progress-bar>
+  <div class="textOfPercentage">{{ totalChaptersLength }}%</div>
+</div>
+
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    Gauche
+  </mat-drawer>
+  <mat-drawer-content>
+    Contenu
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+</mat-drawer-container>

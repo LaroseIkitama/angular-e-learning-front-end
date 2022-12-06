@@ -18,7 +18,6 @@ export class DetailsCourseComponent implements OnInit {
   course = new Course();
   sections!: Section[];
   chapters!: Chapter[];
-  i = 0;
   constructor(private activateRoute: ActivatedRoute,
     private coursesService: CoursesService,
     private sectionsService: SectionsService,
@@ -42,6 +41,9 @@ export class DetailsCourseComponent implements OnInit {
 
   commentsView(id: number) {
     this.router.navigate([`comments-course/${id}`]);
+  }
+  takeCourse(id: number) {
+    this.router.navigate([`take-course/${id}`]);
   }
 
 }

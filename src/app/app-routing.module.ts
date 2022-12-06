@@ -15,10 +15,14 @@ import { CertificateComponent } from './courses2/components/certificate/certific
 import { FormationComponent } from './courses2/components/formation/formation.component';
 import { DetailsCourseComponent } from './courses2/components/details-course/details-course.component';
 import { CommentsComponent } from './courses2/components/comments/comments.component';
+import { TakeCourseComponent } from './courses2/components/take-course/take-course.component';
 
 const routes: Routes = [
   { path: 'new-course', component: NewCourseComponent },
   { path: 'course-list', component: CourseListComponent },
+  { path: 'details-course/:id', component: DetailsCourseComponent },
+  { path: 'comments-course/:id', component: CommentsComponent },
+  { path: 'take-course/:id', component: TakeCourseComponent },
 
   { path: 'update-category/:id', component: UpdateCategoryComponent },
   { path: 'new-category', component: NewCategoryComponent },
@@ -30,11 +34,11 @@ const routes: Routes = [
 
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+
   { path: 'trainer-dashboard', component: TrainerDashboardComponent },
+
   { path: 'certificate', component: CertificateComponent },
   { path: 'formation', component: FormationComponent },
-  { path: 'details-course/:id', component: DetailsCourseComponent },
-  { path: 'comments-course/:id', component: CommentsComponent },
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];
