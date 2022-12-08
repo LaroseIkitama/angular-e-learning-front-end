@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoriesService } from '../../../core/services/categories.service';
-import { Observable } from 'rxjs';
 import { Category } from '../../../core/models/category.model';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogAlertDeleteComponent } from 'src/app/core/components/dialog-alert-delete/dialog-alert-delete.component';
 
 @Component({
   selector: 'app-category-list',
@@ -22,7 +21,8 @@ export class CategoryListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private categoriesService: CategoriesService, public dialog: MatDialog) { }
+  constructor(private categoriesService: CategoriesService,
+    private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.categoriesService.getCategories().
@@ -36,12 +36,23 @@ export class CategoryListComponent implements OnInit {
   }
 
   deleteCategory(category: Category) {
-    let confirmation = confirm("Are you sure? You want to delete this category?");
-    if (confirmation) {
-      this.categoriesService.deleteCategory(category.id).subscribe(() => { });
-      window.location.reload();
-    }
+    const dialogRef = this.matDialog.open(DialogAlertDeleteComponent, {
+      width: '30%',
+      enterAnimationDuration: '600ms',
+      exitAnimationDuration: '300ms',
+      data: {
+        message: "Voulez-vous vraiment supprimer cette catégorie ??"
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.data[0].confirmed) {
+          this.categoriesService.deleteCategory(category.id).subscribe(() => {  window.location.reload();});
+        }
+      }
+    });
   }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
 

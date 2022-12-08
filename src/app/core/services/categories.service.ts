@@ -7,37 +7,49 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
+const apiUrl = 'http://localhost:8080/yekola/categories';
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
-  apiUrl:string='http://localhost:8080/yekola/categories';
   constructor(private http: HttpClient) { }
 
-  getCategory(id: number): Observable<Category> {
-    return this.http.get<Category>(`${this.apiUrl}/${id}`);
+  getCategory(id: number): Observable<Category|undefined> {
+    return this.http.get<Category>(`${apiUrl}/${id}/get`).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, undefined))
+    );
   }
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.apiUrl).pipe(
+    return this.http.get<Category[]>(apiUrl).pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, []))
     );
   }
 
-  updateCategory(category: Category): Observable<Category> {
-    return this.http.put<Category>(`${this.apiUrl}/update`, category, httpOptions);
+  updateCategory(category: Category): Observable<Category | undefined> {
+    return this.http.put<Category>(`${apiUrl}/update`, category, httpOptions).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, undefined))
+    );
   }
-  createCategory(category: Category): Observable<Category> {
-    return this.http.post<Category>(this.apiUrl, category, httpOptions);
+  createCategory(category: Category): Observable<null> {
+    return this.http.post<Category>(`${apiUrl}/create`, category, httpOptions).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, null))
+    );
   }
 
-  deleteCategory(id: number) {
-    return this.http.delete(`${this.apiUrl}/${id}/delete`, httpOptions);
+  deleteCategory(id: number):Observable<null> {
+    return this.http.delete(`${apiUrl}/${id}/delete`, httpOptions).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, null))
+    );
   }
 
 
-  private log(response: Category[] | Category | undefined) {
-    console.log(response);
+  private log(response: any) {
+    console.table(response);
   }
 
   private handleError(error: Error, errorValue: any) {

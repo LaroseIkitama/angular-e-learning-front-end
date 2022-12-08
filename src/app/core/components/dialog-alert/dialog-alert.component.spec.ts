@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StepOneComponent } from './step-one.component';
+import { DialogAlertComponent } from './dialog-alert.component';
 
-describe('StepOneComponent', () => {
-  let component: StepOneComponent;
-  let fixture: ComponentFixture<StepOneComponent>;
+describe('DialogAlertComponent', () => {
+  let component: DialogAlertComponent;
+  let fixture: ComponentFixture<DialogAlertComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StepOneComponent ]
+      declarations: [ DialogAlertComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StepOneComponent);
+    fixture = TestBed.createComponent(DialogAlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

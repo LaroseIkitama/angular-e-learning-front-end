@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
+import { DialogAlertComponent } from 'src/app/core/components/dialog-alert/dialog-alert.component';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Category } from '../../../core/models/category.model';
 import { CategoriesService } from '../../../core/services/categories.service';
@@ -14,29 +16,46 @@ import { CategoriesService } from '../../../core/services/categories.service';
 export class NewCategoryComponent implements OnInit {
   newCategory = new Category();
   categoryForm!: FormGroup;
-  message!: string;
+  validData = true;
   constructor(private categoriesService: CategoriesService,
     public authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router,
+    private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
-      id: [],
+      id: [500],
       name: ['', Validators.required]
     });
   }
   onSubmitForm() {
-    this.categoriesService.createCategory(this.categoryForm.value).pipe(
-      tap(() => this.router.navigateByUrl('/category-list'))
-    ).subscribe();
+    this.categoriesService.getCategories().subscribe(categories => {
+      for (let category of categories) {
+        if (category.name.toUpperCase() === this.categoryForm.value.name.toUpperCase()) {
+          this.matDialog.open(DialogAlertComponent, {
+            width: '30%',
+            enterAnimationDuration: '500ms',
+            exitAnimationDuration: '500ms',
+            data:{
+              message:"Impossible de créer cette catégorie car elle existe déjà."
+            }
+          });
+          this.validData = false;
+        }
+      }
+      if (this.validData) {
+        this.categoriesService.createCategory(this.categoryForm.value).pipe(
+          tap(() => this.router.navigate(['/category-list']))
+        ).subscribe();
+      }
+    });
+
   }
   createCategory() {
     this.categoriesService.createCategory(this.newCategory).subscribe(category => {
-      console.log(category);
-      this.router.navigateByUrl('/category-list');
-    })
-
+      this.router.navigate(['/category-list']);
+    });
   }
 
 }
