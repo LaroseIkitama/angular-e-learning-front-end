@@ -7,32 +7,32 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
-const apiUrl='http://localhost:3000/categories';
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
+  apiUrl:string='http://localhost:8080/yekola/categories';
   constructor(private http: HttpClient) { }
 
   getCategory(id: number): Observable<Category> {
-    return this.http.get<Category>(`${apiUrl}/${id}`);
+    return this.http.get<Category>(`${this.apiUrl}/${id}`);
   }
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(apiUrl).pipe(
+    return this.http.get<Category[]>(this.apiUrl).pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, []))
     );
   }
 
   updateCategory(category: Category): Observable<Category> {
-    return this.http.put<Category>(apiUrl, category, httpOptions);
+    return this.http.put<Category>(`${this.apiUrl}/update`, category, httpOptions);
   }
   createCategory(category: Category): Observable<Category> {
-    return this.http.post<Category>(apiUrl, category, httpOptions);
+    return this.http.post<Category>(this.apiUrl, category, httpOptions);
   }
 
   deleteCategory(id: number) {
-    return this.http.delete(`${apiUrl}/${id}`, httpOptions);
+    return this.http.delete(`${this.apiUrl}/${id}/delete`, httpOptions);
   }
 
 
