@@ -16,7 +16,8 @@ import { SectionsService } from 'src/app/core/services/sections.service';
 })
 export class TakeCourseComponent implements OnInit {
   panelOpenState = false;
-  course = new Course();
+  // course = new Course();
+  course: Course | undefined;
   sections!: Section[];
   chapters!: Chapter[];
 
@@ -35,9 +36,15 @@ export class TakeCourseComponent implements OnInit {
     private chaptersValidatedService: chaptersValidatedService) { }
 
   ngOnInit(): void {
-    this.coursesService.getCourse(this.activateRoute.snapshot.params['id']).subscribe(course => {
-      this.course = course;
-    });
+    const courseId: string | null = this.activateRoute.snapshot.paramMap.get('id');
+    if (courseId) {
+      this.coursesService.getCourse(+courseId).subscribe((course) => {
+        this.course = course;
+      });
+    }
+    // this.coursesService.getCourse(this.activateRoute.snapshot.params['id']).subscribe(course => {
+    //   this.course = course;
+    // });
 
     /* All sections */
     this.sectionsService.getSections().subscribe(sections => {
@@ -60,7 +67,7 @@ export class TakeCourseComponent implements OnInit {
         /* Loop on chapters table length*/
         for (let j = 0; j < this.totalChaptersLength; j++) {
 
-          if ((this.chapters[j].id ==this.chaptersValidatedTable[i].chapterId ) && (this.chaptersValidatedTable[i].userId == 2)) {
+          if ((this.chapters[j].id == this.chaptersValidatedTable[i].chapterId) && (this.chaptersValidatedTable[i].userId == 2)) {
             this.totalChaptersValidated = this.totalChaptersValidated + 1;
             console.log('=====?Chapter valider correspond?====');
             console.log(this.totalChaptersValidated);

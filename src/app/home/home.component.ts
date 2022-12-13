@@ -26,11 +26,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.coursesService.getCoursesPublished().subscribe(courses => {
       this.courses = courses;
-      console.log(this.courses);
+      console.log("Course")
+      console.table(this.courses);
     });
     this.categoriesService.getCategories().subscribe(categories => {
       this.categories = categories;
-      console.log(this.courses);
+      console.table(this.courses);
     });
   }
 

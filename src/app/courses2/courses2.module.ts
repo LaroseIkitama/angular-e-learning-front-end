@@ -18,6 +18,7 @@ import { FormationComponent } from './components/formation/formation.component';
 import { DetailsCourseComponent } from './components/details-course/details-course.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { TakeCourseComponent } from './components/take-course/take-course.component';
+import { DialogChapterUpdateFormGroupComponent } from './components/dialog-chapter-update-form-group/dialog-chapter-update-form-group.component';
 
 
 
@@ -37,7 +38,8 @@ import { TakeCourseComponent } from './components/take-course/take-course.compon
     FormationComponent,
     DetailsCourseComponent,
     CommentsComponent,
-    TakeCourseComponent
+    TakeCourseComponent,
+    DialogChapterUpdateFormGroupComponent
   ],
   imports: [
     CommonModule,

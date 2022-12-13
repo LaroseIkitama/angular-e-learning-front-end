@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Nouveau Chapitre</h1>
+<form [formGroup]="chapterDialogForm">
+  <div mat-dialog-content>
+    <!-- Id -->
+    <mat-form-field appearance="outline" hidden>
+      <mat-label>Id</mat-label>
+      <input type="number" matInput formControlName="id">
+    </mat-form-field>
+    <!-- Title -->
+    <mat-form-field appearance="outline">
+      <mat-label>Titre</mat-label>
+      <input type="text" matInput formControlName="title">
+    </mat-form-field>
+    <!-- Content text -->
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contenu</mat-label>
+      <textarea matInput placeholder="Type the content" formControlName="contentText"></textarea>
+    </mat-form-field>
+    <!-- Section Id -->
+    <mat-form-field appearance="outline" hidden>
+      <mat-label>Id Section</mat-label>
+      <input type="number" matInput formControlName="sectionId">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" type="reset">Supprimer</button>
+    <button mat-raised-button color="accent" mat-dialog-close>Sortir</button>
+    <button mat-raised-button color="primary" (click)="onAddChapter()">Modifier</button>
+  </div>
+</form>

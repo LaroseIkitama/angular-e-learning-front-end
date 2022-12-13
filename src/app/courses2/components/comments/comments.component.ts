@@ -10,15 +10,23 @@ import { CoursesService } from 'src/app/core/services/courses.service';
 })
 export class CommentsComponent implements OnInit {
 
-  course = new Course();
+  // course = new Course();
+  /* Ici 22h */
+  course:Course|undefined;
   constructor(private coursesService: CoursesService,
     private router: Router,
     private activateRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.coursesService.getCourse(this.activateRoute.snapshot.params['id']).subscribe(course => {
-      this.course = course;
-    });
+    const courseId:string | null = this.activateRoute.snapshot.paramMap.get('id');
+    if(courseId){
+      this.coursesService.getCourse(+courseId).subscribe((course)=>{
+        this.course=course;
+      });
+    }
+    // this.coursesService.getCourse(this.activateRoute.snapshot.params['id']).subscribe(course => {
+    //   this.course = course;
+    // });
   }
   backOnDetails(id: number) {
     this.router.navigate([`details-course/${id}`]);

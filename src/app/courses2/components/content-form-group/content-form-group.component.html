@@ -13,7 +13,14 @@
           <mat-card-content>
             <ng-container *ngIf="element.chapters.length else elseTemplate">
               <ul *ngFor="let chapter of element.chapters; let j=index">
-                <li>Chapitre {{ j+1 }} - {{ chapter.title }}</li>
+                <li>Chapitre {{ j+1 }} - {{ chapter.title }}
+                  <button class="btn btn-delete" (click)="onDeleteChapter(i,j)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                  <button class="btn btn-edit" (click)="onUpdateChapter(i,j)">
+                    <mat-icon>create</mat-icon>
+                  </button>
+                </li>
               </ul>
             </ng-container>
             <ng-template #elseTemplate>

@@ -1,1 +1,1 @@
-<button mat-raised-button color="primary" (click)="backOnDetails(course.id)">Retour</button>
+<button mat-raised-button color="primary" *ngIf="course" (click)="backOnDetails(course.id)">Retour</button>

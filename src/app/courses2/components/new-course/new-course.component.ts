@@ -14,14 +14,14 @@ export class NewCourseComponent implements OnInit {
   ngOnInit(): void {
     this.courseForm = new FormGroup({
       'information': new FormGroup({
-        'id': new FormControl(),
+        'id': new FormControl(500),
         'title': new FormControl(null, Validators.required),
         'description': new FormControl(null, Validators.required),
         'level': new FormControl(null, Validators.required),
         'duration': new FormControl(null, Validators.required),
-        'userId': new FormControl(3),
-        'categoryId': new FormControl(null, Validators.required),
+        'category': new FormControl(null, Validators.required),
         'status': new FormControl(0),
+        // 'userId': new FormControl(3),
       }),
       'content': new FormArray([]),
       'media': new FormGroup({
@@ -30,7 +30,7 @@ export class NewCourseComponent implements OnInit {
       })
     });
 
-    console.log('Formulaire de base');
-    console.log(this.courseForm.value);
+    console.log('ETAPE 1 - INFORMATION -');
+    console.table(this.courseForm.value);
   }
 }

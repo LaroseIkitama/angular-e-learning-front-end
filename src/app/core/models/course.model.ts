@@ -9,6 +9,5 @@ export class Course {
   duration!: string;
   level!: string;
   status!: number;
-  userId!: number;
-  categoryId!: number;
+  category!: Category;
 }

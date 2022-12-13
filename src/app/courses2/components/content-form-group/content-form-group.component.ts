@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Section } from 'src/app/core/models/section.model';
 import { DialogChapterFormGroupComponent } from '../dialog-chapter-form-group/dialog-chapter-form-group.component';
+import { DialogChapterUpdateFormGroupComponent } from '../dialog-chapter-update-form-group/dialog-chapter-update-form-group.component';
 import { DialogSectionFormGroupComponent } from '../dialog-section-form-group/dialog-section-form-group.component';
 import { DialogSectionUpdateFormGroupComponent } from '../dialog-section-update-form-group/dialog-section-update-form-group.component';
 
@@ -18,6 +19,7 @@ export class ContentFormGroupComponent implements OnInit {
   sectionInputForm!: FormGroup;
   currentSectionForm!: FormGroup;
   chapterInputForm!: FormGroup;
+  currentChapterForm!: FormGroup;
 
   constructor(private matDialog: MatDialog) { }
 
@@ -81,9 +83,11 @@ export class ContentFormGroupComponent implements OnInit {
     });
     this.currentSectionForm.value.id = this.form.value.content[index].id;
     this.currentSectionForm.value.title = this.form.value.content[index].title;
+    this.currentSectionForm.value.chapters=this.form.value.content[index].chapters;
     let sharedData!: Section;
     sharedData = this.form.value.content[index].section;
     console.log('SHARED = ', sharedData.title);
+    console.table(this.form.value.content[index].chapters);
     const dialogRef = this.matDialog.open(DialogSectionUpdateFormGroupComponent, {
       width: '80%',
       enterAnimationDuration: '500ms',
@@ -95,10 +99,12 @@ export class ContentFormGroupComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.currentSectionForm = result.data;
+        this.currentSectionForm.value.section.id = result.data.value.section.id;
+        this.currentSectionForm.value.section.title = result.data.value.section.title;
+        this.currentSectionForm.value.chapters = this.form.value.content[index].chapters;
         this.form.value.content[index] = this.currentSectionForm.value;
         console.log("Formulary de base apres update d'information");
-        console.log(this.form.value);
+        console.log( this.form.value.content[index]);
       }
     });
   }
@@ -137,5 +143,47 @@ export class ContentFormGroupComponent implements OnInit {
           control.updateValueAndValidity();
       })
     });
+  }
+
+  onDeleteChapter(indexSection:number,indexChapter:number){
+    this.form.value.content[indexSection].chapters.pop(this.form.value.content[indexSection].chapters[indexChapter]);
+  }
+  onUpdateChapter(indexSection:number,indexChapter:number){
+    this.currentChapterForm = new FormGroup({
+      'id': new FormControl(),
+      'title': new FormControl(null, Validators.required),
+      'contentText': new FormControl(null, Validators.required),
+      'sectionId': new FormControl(null)
+    });
+    this.currentChapterForm.value.id=this.form.value.content[indexSection].chapters[indexChapter].id;
+    this.currentChapterForm.value.title=this.form.value.content[indexSection].chapters[indexChapter].title;
+    this.currentChapterForm.value.contentText=this.form.value.content[indexSection].chapters[indexChapter].contentText;
+    this.currentChapterForm.value.sectionId=this.form.value.content[indexSection].chapters[indexChapter].sectionId;
+    console.log("Chapter entrain d'etre modifer");
+    console.table(this.currentChapterForm.value);
+    const dialogRef = this.matDialog.open(DialogChapterUpdateFormGroupComponent, {
+      width: '80%',
+      enterAnimationDuration: '500ms',
+      data: { formChapter: this.currentChapterForm }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log("'ICIIIII AVANT");
+        console.table(this.currentChapterForm.value);
+        console.log('The dialog was closed', result.data.value);
+        if(result.data.value.title!=null){
+          this.currentChapterForm.value.title=result.data.value.title
+        }
+        if(result.data.value.contentText!=null){
+          this.currentChapterForm.value.contentText=result.data.value.contentText
+        }
+        console.log("'ICIIIII APRES");
+        console.table(this.currentChapterForm.value);
+        this.form.value.content[indexSection].chapters[indexChapter]=this.currentChapterForm.value;
+
+      }
+    });
+
   }
 }

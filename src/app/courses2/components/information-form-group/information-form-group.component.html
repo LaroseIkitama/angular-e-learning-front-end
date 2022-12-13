@@ -31,8 +31,8 @@
     <!-- Category Id -->
     <mat-form-field appearance="outline" formGroupName="information" class="formular_input">
       <mat-label>Catégorie</mat-label>
-      <mat-select formControlName="categoryId">
-        <mat-option *ngFor="let category of categories" [value]="category.id">
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let category of categories" [value]="category">
           {{category.name}}
         </mat-option>
       </mat-select>
@@ -48,10 +48,10 @@
       <input type="number" matInput formControlName="status">
     </mat-form-field>
     <!-- UserId -->
-    <mat-form-field appearance="outline" formGroupName="information" hidden>
+    <!-- <mat-form-field appearance="outline" formGroupName="information" hidden>
       <mat-label>userId</mat-label>
       <input type="number" matInput formControlName="userId">
-    </mat-form-field>
+    </mat-form-field> -->
     <div class="action-buttons">
       <button mat-raised-button color="primary" (click)="step1Submitted()" matStepperNext>Suivant</button>
     </div>

@@ -15,9 +15,13 @@ import { SectionsService } from 'src/app/core/services/sections.service';
 export class DetailsCourseComponent implements OnInit {
   panelOpenState = false;
 
-  course = new Course();
+  // course = new Course();
   sections!: Section[];
   chapters!: Chapter[];
+
+  /* Ici 22h */
+  course:Course|undefined;
+
   constructor(private activateRoute: ActivatedRoute,
     private coursesService: CoursesService,
     private sectionsService: SectionsService,
@@ -25,10 +29,16 @@ export class DetailsCourseComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.coursesService.getCourse(this.activateRoute.snapshot.params['id']).subscribe(course => {
-      this.course = course;
+    const courseId:string | null = this.activateRoute.snapshot.paramMap.get('id');
+    if(courseId){
+      this.coursesService.getCourse(+courseId).subscribe((course)=>{
+        this.course=course;
+      });
+    }
+    // this.coursesService.getCourse(this.activateRoute.snapshot.params['id']).subscribe(course => {
+    //   this.course = course;
 
-    });
+    // });
     this.sectionsService.getSections().subscribe(sections => {
       this.sections = sections;
       console.log(this.sections);

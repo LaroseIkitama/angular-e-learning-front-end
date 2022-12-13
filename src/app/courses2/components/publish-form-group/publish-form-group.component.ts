@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
+import { Category } from 'src/app/core/models/category.model';
 import { Chapter } from 'src/app/core/models/chapter.model';
 import { Course } from 'src/app/core/models/course.model';
 import { Section } from 'src/app/core/models/section.model';
@@ -34,21 +36,30 @@ export class PublishFormGroupComponent implements OnInit {
 
   }
   save() {
+
+    const category= new Category();
     /* course parameters */
-    this.newCourse.id = this.lastId;
+    this.newCourse.id = this.form.value.information.id;
     this.newCourse.title = this.form.value.information.title;
     this.newCourse.description = this.form.value.information.description;
     this.newCourse.image = this.form.value.media.image;
     this.newCourse.video = this.form.value.media.video;
     this.newCourse.duration = this.form.value.information.duration;
-    this.newCourse.status = 0;
-    this.newCourse.userId = this.form.value.information.userId;
-    this.newCourse.categoryId = this.form.value.information.categoryId;
+    this.newCourse.level = this.form.value.information.level;
+    this.newCourse.status = this.form.value.information.status;
+    category.id=this.form.value.information.category.id;
+    category.name=this.form.value.information.category.name;
+    this.newCourse.category =this.form.value.information.category;
+    // this.newCourse.userId = this.form.value.information.userId;
+
+    console.log("SAUVEGARDE DU COURS SANS PUBLIER");
+    console.log(this.newCourse);
 
     /* Create course */
-    this.coursesServices.createCourse(this.newCourse).subscribe();
+    this.coursesServices.createCourse(this.newCourse).subscribe(()=>{
+    });
 
-    this.router.navigate(['/course-list']);
+    //this.router.navigate(['/course-list']);
   }
 
   submit() {
@@ -57,15 +68,16 @@ export class PublishFormGroupComponent implements OnInit {
     this.formSubmitted = true;
 
     /* course parameters */
-    this.newCourse.id = this.lastId;
+    this.newCourse.id = this.form.value.information.id;
     this.newCourse.title = this.form.value.information.title;
     this.newCourse.description = this.form.value.information.description;
     this.newCourse.image = this.form.value.media.image;
     this.newCourse.video = this.form.value.media.video;
     this.newCourse.duration = this.form.value.information.duration;
+    this.newCourse.level = this.form.value.information.level;
     this.newCourse.status = 1;
-    this.newCourse.userId = this.form.value.information.userId;
-    this.newCourse.categoryId = this.form.value.information.categoryId;
+    this.newCourse.category =this.form.value.information.category;
+    // this.newCourse.userId = this.form.value.information.userId;
 
     //console.log('information to create a new Course');
     console.log(this.newCourse);
@@ -91,12 +103,12 @@ export class PublishFormGroupComponent implements OnInit {
 
       /* Parcourir les cours */
       console.log(this.courses);
-      for (const element of this.courses) {
+      // for (const element of this.courses) {
 
-        if ((element.userId === this.newCourse.id) && (element.title === this.newCourse.title)) {
-          console.log("le cours attribuer a cette section sera [ ", element.title, " ]");
-        }
-      }
+      //   if ((element.userId === this.newCourse.id) && (element.title === this.newCourse.title)) {
+      //     console.log("le cours attribuer a cette section sera [ ", element.title, " ]");
+      //   }
+      // }
 
     }
 

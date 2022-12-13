@@ -4,12 +4,12 @@
 <div *ngFor="let course of courses">
   <mat-card class="mat-elevation-z8">
     <div id="image">
-      <img *ngIf="course.categoryId==2" src="assets/images/development.jpg" alt="image du cours">
-      <img *ngIf="course.categoryId==3" src="assets/images/securité.jpg" alt="image du cours">
+      <img *ngIf="course.category.id==2" src="assets/images/development.jpg" alt="image du cours">
+      <img *ngIf="course.category.id==3" src="assets/images/securité.jpg" alt="image du cours">
     </div>
     <div id="information">
       <h4>{{ course.title | titlecase }}</h4>
-      <h4 class="categorie" *ngFor="let category of categories"><span *ngIf="category.id==course.categoryId">{{
+      <h4 class="categorie" *ngFor="let category of categories"><span *ngIf="category.id==course.category.id">{{
           category.name }}</span>
       </h4>
       <div id="levelDuration">
@@ -21,14 +21,14 @@
           <mat-icon>schedule</mat-icon>
           <p>{{ course.duration }}</p>
         </div>
-        <div class="levelDuration_ color" *ngIf="course.categoryId==2">
+        <div class="levelDuration_ color" *ngIf="course.category.id==2">
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>
         </div>
-        <div class="levelDuration_ color" *ngIf="course.categoryId==3">
+        <div class="levelDuration_ color" *ngIf="course.category.id==3">
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>

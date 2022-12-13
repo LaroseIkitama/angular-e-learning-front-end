@@ -1,5 +1,5 @@
 <div class="content">
-  <div class="mat-elevation-z8 elementContent">
+  <div class="mat-elevation-z8 elementContent" *ngIf="course">
     <div class="content-image">
       <h3>{{ course.title | titlecase }}</h3>
       <div class="levelDuration">
@@ -11,14 +11,14 @@
           <mat-icon>schedule</mat-icon>
           <p>{{ course.duration }}</p>
         </div>
-        <div class="levelDuration_ color" *ngIf="course.categoryId==2">
+        <div class="levelDuration_ color" *ngIf="course.category.id==2">
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>
         </div>
-        <div class="levelDuration_ color" *ngIf="course.categoryId==3">
+        <div class="levelDuration_ color" *ngIf="course.category.id==3">
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>
           <mat-icon>grade</mat-icon>
