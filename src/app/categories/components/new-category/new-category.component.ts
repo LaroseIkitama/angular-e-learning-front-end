@@ -52,10 +52,10 @@ export class NewCategoryComponent implements OnInit {
     });
 
   }
-  createCategory() {
-    this.categoriesService.createCategory(this.newCategory).subscribe(category => {
-      this.router.navigate(['/category-list']);
-    });
-  }
+  // createCategory() {
+  //   this.categoriesService.createCategory(this.newCategory).subscribe(category => {
+  //     this.router.navigate(['/category-list']);
+  //   });
+  // }
 
 }

@@ -12,13 +12,13 @@
       <mat-drawer mode="side" opened="true">
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
           *ngFor="let section of sections;">
-          <mat-expansion-panel-header *ngIf="section.courseId==course.id" style="background:#848588;">
+          <mat-expansion-panel-header *ngIf="section.course.id==course.id" style="background:#848588;">
             <mat-panel-description>
               <span style="font-weight:bolder ; font-size: 17px; color: white;"> {{section.title}} </span>
             </mat-panel-description>
           </mat-expansion-panel-header>
           <ul *ngFor="let chapter of chapters">
-            <li *ngIf="chapter.sectionId==section.id"> {{ chapter.title | titlecase }} <span *ngIf="chapter.id==1" style="color: #10D65F;"><mat-icon>check_circle</mat-icon></span></li>
+            <li *ngIf="chapter.section.id==section.id"> {{ chapter.title | titlecase }} <span *ngIf="chapter.id==1" style="color: #10D65F;"><mat-icon>check_circle</mat-icon></span></li>
           </ul>
         </mat-expansion-panel>
       </mat-drawer>

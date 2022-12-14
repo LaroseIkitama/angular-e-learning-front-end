@@ -18,8 +18,8 @@ export class DialogChapterUpdateFormGroupComponent implements OnInit {
     this.chapterDialogForm = new FormGroup({
       'id': new FormControl(null),
       'title': new FormControl(null, Validators.required),
-      'contentText': new FormControl(null, Validators.required),
-      'sectionId': new FormControl(null)
+      'content': new FormControl(null, Validators.required),
+      'section': new FormControl(null)
     });
   }
   onAddChapter() {

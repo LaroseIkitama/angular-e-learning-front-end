@@ -38,7 +38,7 @@
       <h1><span style="font-weight:bold ;">Tables des matières</span> </h1>
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
         *ngFor="let section of sections;">
-        <mat-expansion-panel-header *ngIf="section.courseId==course.id" style="background:#848588;">
+        <mat-expansion-panel-header *ngIf="section.course.id==course.id" style="background:#848588;">
           <mat-panel-title>
             <span style="font-weight:bold ; color: brown;">
               <mat-icon>flag</mat-icon>
@@ -49,7 +49,7 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <ul *ngFor="let chapter of chapters">
-          <li *ngIf="chapter.sectionId==section.id">{{ chapter.title | titlecase }}</li>
+          <li *ngIf="chapter.section.id==section.id">{{ chapter.title | titlecase }}</li>
         </ul>
       </mat-expansion-panel>
     </div>

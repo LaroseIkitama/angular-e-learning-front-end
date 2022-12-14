@@ -9,5 +9,6 @@ export class Course {
   duration!: string;
   level!: string;
   status!: number;
+  user!:number;
   category!: Category;
 }

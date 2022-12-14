@@ -35,7 +35,7 @@ export class ContentFormGroupComponent implements OnInit {
   addSection() {
     this.sectionInputForm = new FormGroup({
       'section': new FormGroup({
-        'id': new FormControl(null),
+        'id': new FormControl(500),
         'title': new FormControl(null, Validators.required),
       }),
       'chapters': new FormArray([])
@@ -76,7 +76,7 @@ export class ContentFormGroupComponent implements OnInit {
   onUpdate(index: number) {
     this.currentSectionForm = new FormGroup({
       'section': new FormGroup({
-        'id': new FormControl(),
+        'id': new FormControl(500),
         'title': new FormControl(null, Validators.required),
       }),
       'chapters': new FormArray([])
@@ -112,10 +112,10 @@ export class ContentFormGroupComponent implements OnInit {
   addChapter(index: number) {
 
     this.chapterInputForm = new FormGroup({
-      'id': new FormControl(),
+      'id': new FormControl(500),
       'title': new FormControl(null, Validators.required),
-      'contentText': new FormControl(null, Validators.required),
-      'sectionId': new FormControl(null)
+      'content': new FormControl(null, Validators.required),
+      'section': new FormControl(null)
     });
 
     const dialogRef = this.matDialog.open(DialogChapterFormGroupComponent, {
@@ -150,15 +150,15 @@ export class ContentFormGroupComponent implements OnInit {
   }
   onUpdateChapter(indexSection:number,indexChapter:number){
     this.currentChapterForm = new FormGroup({
-      'id': new FormControl(),
+      'id': new FormControl(500),
       'title': new FormControl(null, Validators.required),
-      'contentText': new FormControl(null, Validators.required),
-      'sectionId': new FormControl(null)
+      'content': new FormControl(null, Validators.required),
+      'section': new FormControl(null)
     });
     this.currentChapterForm.value.id=this.form.value.content[indexSection].chapters[indexChapter].id;
     this.currentChapterForm.value.title=this.form.value.content[indexSection].chapters[indexChapter].title;
-    this.currentChapterForm.value.contentText=this.form.value.content[indexSection].chapters[indexChapter].contentText;
-    this.currentChapterForm.value.sectionId=this.form.value.content[indexSection].chapters[indexChapter].sectionId;
+    this.currentChapterForm.value.content=this.form.value.content[indexSection].chapters[indexChapter].content;
+    this.currentChapterForm.value.section=this.form.value.content[indexSection].chapters[indexChapter].section;
     console.log("Chapter entrain d'etre modifer");
     console.table(this.currentChapterForm.value);
     const dialogRef = this.matDialog.open(DialogChapterUpdateFormGroupComponent, {
@@ -175,8 +175,8 @@ export class ContentFormGroupComponent implements OnInit {
         if(result.data.value.title!=null){
           this.currentChapterForm.value.title=result.data.value.title
         }
-        if(result.data.value.contentText!=null){
-          this.currentChapterForm.value.contentText=result.data.value.contentText
+        if(result.data.value.content!=null){
+          this.currentChapterForm.value.content=result.data.value.content
         }
         console.log("'ICIIIII APRES");
         console.table(this.currentChapterForm.value);

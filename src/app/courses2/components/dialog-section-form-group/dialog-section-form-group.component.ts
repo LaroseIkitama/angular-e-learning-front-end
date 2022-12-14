@@ -20,7 +20,7 @@ export class DialogSectionFormGroupComponent implements OnInit {
   ngOnInit(): void {
     this.sectionDialogForm = new FormGroup({
       'section': new FormGroup({
-        'id': new FormControl(null),
+        'id': new FormControl(500),
         'title': new FormControl(null, Validators.required),
       }),
       'chapters': new FormArray([])

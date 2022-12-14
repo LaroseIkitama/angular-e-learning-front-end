@@ -21,6 +21,7 @@ export class NewCourseComponent implements OnInit {
         'duration': new FormControl(null, Validators.required),
         'category': new FormControl(null, Validators.required),
         'status': new FormControl(0),
+        'user': new FormControl(3),
         // 'userId': new FormControl(3),
       }),
       'content': new FormArray([]),

@@ -7,7 +7,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
-const apiUrl = 'http://localhost:3000/sections';
+const apiUrl = 'http://localhost:8080/yekola/sections';
 
 @Injectable({
   providedIn: 'root'
@@ -19,18 +19,12 @@ export class SectionsService {
   constructor(private http: HttpClient) { }
 
 
-  createSection(section: Section): Observable<Section> {
-    return this.http.post<Section>(apiUrl, section, httpOptions);
+  getSection(id: number): Observable<Section|undefined> {
+    return this.http.get<Section>(`${apiUrl}/${id}/get`).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, undefined))
+    );
   }
-
-  deleteSection(id: number) {
-    return this.http.delete(`${apiUrl}/${id}`, httpOptions);
-  }
-
-  getSection(id: number): Observable<Section> {
-    return this.http.get<Section>(`${apiUrl}/${id}`);
-  }
-
   getSections(): Observable<Section[]> {
     return this.http.get<Section[]>(apiUrl).pipe(
       tap((response) => this.log(response)),
@@ -38,20 +32,34 @@ export class SectionsService {
     );
   }
 
-  getAllSectionOfCOurse(id: number): Observable<Section[]> {
-    return this.http.get<Section[]>(`http://localhost:3000/courses/${id}/sections`).pipe(
+  updateSection(section: Section): Observable<Section | undefined> {
+    return this.http.put<Section>(`${apiUrl}/update`, section, httpOptions).pipe(
       tap((response) => this.log(response)),
-      catchError((error) => this.handleError(error, []))
+      catchError((error) => this.handleError(error, undefined))
     );
-
+  }
+  createSection(section: Section): Observable<null> {
+    return this.http.post<Section>(`${apiUrl}/create`, section, httpOptions).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, null))
+    );
   }
 
-  private log(response: Section[] | Section | undefined) {
-    console.log(response);
+  deleteSection(id: number):Observable<null> {
+    return this.http.delete(`${apiUrl}/${id}/delete`, httpOptions).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, null))
+    );
+  }
+
+
+  private log(response: any) {
+    console.table(response);
   }
 
   private handleError(error: Error, errorValue: any) {
     console.error(error);
     return of(errorValue);
   }
+
 }

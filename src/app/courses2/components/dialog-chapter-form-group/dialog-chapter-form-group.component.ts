@@ -18,10 +18,10 @@ export class DialogChapterFormGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.chapterDialogForm = new FormGroup({
-      'id': new FormControl(null),
+      'id': new FormControl(500),
       'title': new FormControl(null, Validators.required),
-      'contentText': new FormControl(null, Validators.required),
-      'sectionId': new FormControl(null)
+      'content': new FormControl(null, Validators.required),
+      'section': new FormControl(null)
     });
   }
 
