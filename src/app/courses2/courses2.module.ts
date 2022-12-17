@@ -60,7 +60,10 @@ import { DialogChapterUpdateFormGroupComponent } from './components/dialog-chapt
     DialogChapterFormGroupComponent,
     CertificateComponent,
     FormationComponent,
-    DetailsCourseComponent
+    DetailsCourseComponent,
+    CommentsComponent,
+    TakeCourseComponent,
+    DialogChapterUpdateFormGroupComponent
   ]
 })
 export class Courses2Module { }

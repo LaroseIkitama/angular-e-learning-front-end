@@ -12,12 +12,10 @@ import { CoreModule } from './core/core.module';
 import { CategoriesModule } from './categories/categories.module';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { Courses2Module } from './courses2/courses2.module';
 import { SectionsModule } from './sections/sections.module';
-import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
-import { LearnerDashboardComponent } from './learner-dashboard/learner-dashboard.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UsersModule } from './users/users.module';
 
 
 @NgModule({
@@ -25,9 +23,6 @@ import { LogoutComponent } from './logout/logout.component';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    AdminDashboardComponent,
-    TrainerDashboardComponent,
-    LearnerDashboardComponent,
     LogoutComponent
   ],
   imports: [
@@ -42,7 +37,8 @@ import { LogoutComponent } from './logout/logout.component';
     CoreModule,
     CategoriesModule,
     Courses2Module,
-    SectionsModule
+    SectionsModule,
+    UsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -28,7 +28,7 @@
     </div>
     <div class="content_description">
       <div class="trainer-comment">
-        <h3> <span style="font-weight:bold ;">Formateur</span> : Larose</h3>
+        <h3> <span style="font-weight:bold ;">Formateur</span> : {{ course.user.lastName }} {{ course.user.firstName | uppercase }}</h3>
         <button mat-raised-button color="accent" (click)="commentsView(course.id)">Voir commentaires</button>
       </div>
       <h2> <span style="font-weight:bold ;">Description</span> : </h2>

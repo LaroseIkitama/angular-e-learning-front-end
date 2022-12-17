@@ -3,12 +3,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Category } from '../core/models/category.model';
-import { Course } from '../core/models/course.model';
-import { Follow } from '../core/models/follow.model';
-import { CategoriesService } from '../core/services/categories.service';
-import { CoursesService } from '../core/services/courses.service';
-import { FollowsService } from '../core/services/followsService';
+import { Category } from '../../../../core/models/category.model';
+import { Course } from '../../../../core/models/course.model';
+import { Follow } from '../../../../core/models/follow.model';
+import { CategoriesService } from '../../../../core/services/categories.service';
+import { CoursesService } from '../../../../core/services/courses.service';
+import { FollowsService } from '../../../../core/services/followsService';
 
 @Component({
   selector: 'app-learner-dashboard',

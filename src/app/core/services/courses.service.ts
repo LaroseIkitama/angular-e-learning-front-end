@@ -16,12 +16,16 @@ export class CoursesService {
 
   constructor(private http: HttpClient) { }
 
+  getFirstCourse():Observable<Course>{
+    return this.http.get<Course>(`${apiUrl}/first`);
+  }
   getCourse(id: number): Observable<Course | undefined> {
     return this.http.get<Course>(`${apiUrl}/${id}/get`).pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, undefined))
     );
   }
+
 
   getCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(apiUrl).pipe(
@@ -50,6 +54,7 @@ export class CoursesService {
       catchError((error) => this.handleError(error, null))
     );
   }
+
 
   getCoursesPublished(): Observable<Course[]> {
     return this.http.get<Course[]>(`${apiUrl}/draft`).pipe(

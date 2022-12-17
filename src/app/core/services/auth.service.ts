@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { User } from "../models/user.model";
+import { UsersService } from "./usersService";
 
 @Injectable({
   providedIn: 'root'
@@ -8,51 +9,86 @@ import { User } from "../models/user.model";
 
 export class AuthService {
 
-  users: User[] = [
-    { "username": "admin", "password": "123", "roles": ['ADMIN'] },
-    { "username": "larose", "password": "123", "roles": ['USER'] }
-  ];
+  users!: User[];
 
   public loggedUser!: string;
   public isloggedIn: Boolean = false;
-  public roles!: string[];
+  public role!: string;
 
-  constructor(private router: Router) {
-
+  constructor(private router: Router, private usersService: UsersService) {
+    this.usersService.getUsers().subscribe((users) => this.users = users);
+    console.log("username : ", this.loggedUser, " loogin :", this.isloggedIn);
   }
 
   logout() {
     this.isloggedIn = false;
     this.loggedUser = undefined!;
-    this.roles = undefined!;
+    this.role = undefined!;
     localStorage.removeItem('loggedUser');
+    localStorage.removeItem('role');
     localStorage.setItem('isloggedIn', String(this.isloggedIn));
     this.router.navigate(['/login']);
   }
 
   SignIn(user: User): Boolean {
     let validUser: Boolean = false;
-    this.users.forEach((curUser) => {
-      if (user.username == curUser.username && user.password == curUser.password) {
+
+    for (let index = 0; index < this.users.length; index++) {
+      if (this.users[index].username == user.username && this.users[index].password == user.password) {
         validUser = true;
-        this.loggedUser = curUser.username;
+        this.loggedUser = this.users[index].username;
         this.isloggedIn = true;
-        this.roles = curUser.roles;
-        localStorage.setItem('loggedUser', this.loggedUser);
-        localStorage.setItem('isloggedIn', String(this.isloggedIn));
+        this.role = this.users[index].role;
+        localStorage.setItem('loggedUser', this.users[index].username);
+        localStorage.setItem('isloggedIn', String(true));
+        localStorage.setItem('role', String(this.users[index].role));
+        this.setLoggedUser();
       }
-    });
+    }
     return validUser;
   }
+  setLoggedUser():any{
 
-  isAdmin(): Boolean {
-    if (!this.roles) //this.roles== undefiened
+    if(localStorage.getItem('loggedUser')){
+      return localStorage.getItem('loggedUser');
+    }else{
       return false;
-    return (this.roles.indexOf('ADMIN') > -1);
+    }
+  }
+  isAdmin(): Boolean {
+    let response!: boolean;
+    if (!localStorage.getItem('role')) //this.role== undefiened
+      response = false;
+    if (localStorage.getItem('role') === "ADMIN")
+      response = true;
+
+    return response;
   }
   isTrainer(): Boolean {
-    if (!this.roles) //this.roles== undefiened
-      return false;
-    return (this.roles.indexOf('TRAINER') > -1);
+    let response!: boolean;
+    if (!localStorage.getItem('role')) //localStorage.getItem('role')== undefiened
+      response = false;
+    if (localStorage.getItem('role') === "TRAINER")
+      response = true;
+
+    return response;
+  }
+  isLearner(): Boolean {
+    let response!: boolean;
+    if (!localStorage.getItem('role')) //localStorage.getItem('role')== undefiened
+      response = false;
+    if (localStorage.getItem('role') === "LEARNER")
+      response = true;
+
+    return response;
+  }
+  isSuperAdmin(): Boolean {
+    let response!: boolean;
+    if (!localStorage.getItem('role')) //localStorage.getItem('role')== undefiened
+      response = false;
+    if (localStorage.getItem('role') === "SUPER_ADMIN")
+      response = true;
+
+    return response;
   }
 }

@@ -22,9 +22,14 @@ export class LoginComponent implements OnInit {
     let isValidUser: Boolean = this.authService.SignIn(this.user);
     if (isValidUser) {
       /* this.router.navigate(['/login']); */
-      if (this.authService.loggedUser == "admin") {
+      if (this.authService.loggedUser == this.user.username) {
         console.log('ok jazz');
-        this.router.navigate(['admin']);
+        if (this.authService.isAdmin())
+          this.router.navigate(['/admin-dashboard']);
+        if (this.authService.isLearner())
+          this.router.navigate(['/home']);
+        if (this.authService.isTrainer())
+          this.router.navigate(['/trainer-dashboard']);
         /* this.router.navigate([`./admin/${this.user.username}`]); */
       }
     }

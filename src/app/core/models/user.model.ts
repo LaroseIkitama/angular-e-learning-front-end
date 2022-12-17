@@ -9,10 +9,20 @@ export class User {
   avatar!:string;
   website!:string;
   roles!:string[]; */
-  username!:string;
-  password!:string;
-  roles!:string[];
+  // username!:string;
+  // password!:string;
+  // roles!:string[];
 
+  id!: number;
+  username!: string;
+  firstName!: string;
+  lastName!: string;
 
+  email!: string;
 
+  password!: string;
+  biography!: string;
+  website!: string;
+  role!: string;
+  enabled!: boolean;
 }

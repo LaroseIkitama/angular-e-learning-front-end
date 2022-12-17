@@ -1,4 +1,5 @@
 import { Category } from "./category.model";
+import { User } from "./user.model";
 
 export class Course {
   id!: number;
@@ -9,6 +10,6 @@ export class Course {
   duration!: string;
   level!: string;
   status!: number;
-  user!:number;
+  user!:User;
   category!: Category;
 }
