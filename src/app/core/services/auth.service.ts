@@ -14,6 +14,7 @@ export class AuthService {
   public loggedUser!: string;
   public isloggedIn: Boolean = false;
   public role!: string;
+  public userLoggedData = new User();
 
   constructor(private router: Router, private usersService: UsersService) {
     this.usersService.getUsers().subscribe((users) => this.users = users);
@@ -39,19 +40,31 @@ export class AuthService {
         this.loggedUser = this.users[index].username;
         this.isloggedIn = true;
         this.role = this.users[index].role;
+
         localStorage.setItem('loggedUser', this.users[index].username);
         localStorage.setItem('isloggedIn', String(true));
         localStorage.setItem('role', String(this.users[index].role));
+        localStorage.setItem('userData', JSON.stringify(this.users[index]));
+
         this.setLoggedUser();
+
+        this.setUserLoggedData();
       }
     }
     return validUser;
   }
-  setLoggedUser():any{
+  setUserLoggedData(): any {
+    const user = localStorage.getItem('userData');
+    if (user) {
+      this.userLoggedData = JSON.parse(user);
+      return this.userLoggedData;
+    }
+  }
+  setLoggedUser(): any {
 
-    if(localStorage.getItem('loggedUser')){
+    if (localStorage.getItem('loggedUser')) {
       return localStorage.getItem('loggedUser');
-    }else{
+    } else {
       return false;
     }
   }

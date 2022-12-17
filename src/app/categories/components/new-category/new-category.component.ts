@@ -7,6 +7,7 @@ import { DialogAlertComponent } from 'src/app/core/components/dialog-alert/dialo
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Category } from '../../../core/models/category.model';
 import { CategoriesService } from '../../../core/services/categories.service';
+import { User } from 'src/app/core/models/user.model';
 
 @Component({
   selector: 'app-new-category',
@@ -17,16 +18,21 @@ export class NewCategoryComponent implements OnInit {
   newCategory = new Category();
   categoryForm!: FormGroup;
   validData = true;
+  userConnect=new User();
   constructor(private categoriesService: CategoriesService,
     public authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private matDialog: MatDialog) { }
+    private matDialog: MatDialog) {
+      this.userConnect=this.authService.setUserLoggedData();
+      console.log(this.userConnect);
+    }
 
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
       id: [500],
-      name: ['', Validators.required]
+      name: ['', Validators.required],
+      user: [this.userConnect],
     });
   }
   onSubmitForm() {

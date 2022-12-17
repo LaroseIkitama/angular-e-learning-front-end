@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
         if (this.authService.isTrainer())
           this.router.navigate(['/trainer-dashboard']);
         /* this.router.navigate([`./admin/${this.user.username}`]); */
+        console.table(this.authService.setUserLoggedData());
       }
     }
     else {
