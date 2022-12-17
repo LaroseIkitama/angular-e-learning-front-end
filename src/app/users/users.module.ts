@@ -14,6 +14,7 @@ import { MaterialModule } from 'src/material.module';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { LearnerDashboardComponent } from './components/learner/learner-dashboard/learner-dashboard.component';
 import { TrainerDashboardComponent } from './components/trainer/trainer-dashboard/trainer-dashboard.component';
+import { ParametersComponent } from './components/admin/parameters/parameters.component';
 
 
 
@@ -30,7 +31,8 @@ import { TrainerDashboardComponent } from './components/trainer/trainer-dashboar
     LearnerListComponent,
     AdminDashboardComponent,
     LearnerDashboardComponent,
-    TrainerDashboardComponent
+    TrainerDashboardComponent,
+    ParametersComponent
   ],
   imports: [
     CommonModule,

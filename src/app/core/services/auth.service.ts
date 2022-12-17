@@ -27,6 +27,7 @@ export class AuthService {
     this.role = undefined!;
     localStorage.removeItem('loggedUser');
     localStorage.removeItem('role');
+    localStorage.removeItem('userData');
     localStorage.setItem('isloggedIn', String(this.isloggedIn));
     this.router.navigate(['/login']);
   }

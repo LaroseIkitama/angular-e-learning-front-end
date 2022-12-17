@@ -1,0 +1,60 @@
+<div class="container-fluid page">
+  <div class="page__box p-3 mt-2">Paramètres</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data-list">
+      <form>
+        <div class="row">
+
+          <div class="col">
+            <div hidden>
+              <label for="id">ID</label>
+              <input type="number" [(ngModel)]="currentUser.id" name="id" class="form-control"
+                value="{{ currentUser.id }}">
+            </div>
+            <div>
+              <label for="firstName">Nom</label>
+              <input type="text" [(ngModel)]="currentUser.firstName" name="firstName" class="form-control"
+                value="{{ currentUser.firstName }}">
+            </div>
+            <div>
+              <label for="lastName">Prénom</label>
+              <input type="text" [(ngModel)]="currentUser.lastName" name="lastName" class="form-control"
+                value="{{ currentUser.lastName }}">
+            </div>
+            <div>
+              <label for="website">Site web</label>
+              <input type="website" [(ngModel)]="currentUser.website" name="website" class="form-control"
+                value="{{ currentUser.website }}">
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label for="email">Email</label>
+              <input type="email" [(ngModel)]="currentUser.email" name="email" class="form-control"
+                value="{{ currentUser.email }}">
+            </div>
+            <div>
+              <label for="password">Mot De Passe</label>
+              <input type="password" [(ngModel)]="currentUser.password" name="password" class="form-control"
+                value="{{ currentUser.password }}">
+            </div>
+            <div>
+              <label for="username">Username</label>
+              <input type="username" [(ngModel)]="currentUser.username" name="username" class="form-control"
+                value="{{ currentUser.username }}">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label for="biography">Biography</label>
+          <textarea name="biography" id="" cols="30" class="form-control" rows="7" [(ngModel)]="currentUser.biography"
+            value="{{ currentUser.biography }}"></textarea>
+        </div>
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" type="submit" (click)="updateUser()">Modifier</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -22,6 +22,7 @@ import { AdminDashboardComponent } from './users/components/admin/admin-dashboar
 import { TrainerListComponent } from './users/components/trainer/trainer-list/trainer-list.component';
 import { NewTrainerComponent } from './users/components/trainer/new-trainer/new-trainer.component';
 import { UpdateCourseComponent } from './courses2/components/update-course/update-course.component';
+import { ParametersComponent } from './users/components/admin/parameters/parameters.component';
 
 const routes: Routes = [
   { path: 'new-course', component: NewCourseComponent },
@@ -50,7 +51,9 @@ const routes: Routes = [
 
 
   { path: 'learner-dashboard', component: LearnerDashboardComponent },
+
   { path: 'admin-dashboard', component: AdminDashboardComponent },
+  { path: 'admin-parameters', component: ParametersComponent },
 
 
   { path: 'certificate', component: CertificateComponent },
