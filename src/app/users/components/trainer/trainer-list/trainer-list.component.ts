@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy } from '@angular/compiler';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -15,25 +16,31 @@ import { UsersService } from 'src/app/core/services/usersService';
 export class TrainerListComponent implements OnInit {
   users!: User[];
   dataSource!: MatTableDataSource<User[]>;
-  displayedColumn: string[] = ['id', 'firstName', 'lastName', 'email', 'website', 'role','actions'];
+  displayedColumn: string[] = ['id', 'firstName', 'lastName', 'email','username', 'website', 'role', 'profile', 'actions'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private usersService: UsersService,
-    private matDialog: MatDialog) { }
+    private matDialog: MatDialog,
+    private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    let i = 0;
+    this.refresh();
+
+  }
+
+  refresh() {
+    /* tout ceci etait dans ngOnInit */
     this.usersService.getUsers().
       subscribe(users => {
         this.users = users;
         this.dataSource = new MatTableDataSource(<any>this.users);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.changeDetectorRefs.detectChanges();
       }
       );
   }
-
   deleteUser(user: User) {
     const dialogRef = this.matDialog.open(DialogAlertDeleteComponent, {
       width: '30%',

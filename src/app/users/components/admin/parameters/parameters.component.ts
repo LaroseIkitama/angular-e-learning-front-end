@@ -16,10 +16,13 @@ export class ParametersComponent implements OnInit {
   currentUser = new User();
   constructor(private authService: AuthService, private usersService: UsersService, private matDialog: MatDialog) {
     this.userConnect = this.authService.setUserLoggedData();
+
     this.usersService.getUser(+this.userConnect.id).subscribe(
       (user) => {
         if (user) {
           this.currentUser = user;
+          console.log("Je suis la");
+          console.log(this.currentUser);
         }
       });
   }

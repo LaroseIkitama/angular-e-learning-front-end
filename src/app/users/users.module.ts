@@ -51,7 +51,8 @@ import { ParametersComponent } from './components/admin/parameters/parameters.co
     LearnerListComponent,
     AdminDashboardComponent,
     LearnerDashboardComponent,
-    TrainerDashboardComponent
+    TrainerDashboardComponent,
+    ParametersComponent
   ]
 })
 export class UsersModule { }

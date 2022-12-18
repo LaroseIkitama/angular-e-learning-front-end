@@ -1,1 +1,65 @@
-<p>update-trainer works!</p>
+<div class="container-fluid page">
+  <div class="page__box p-3 mt-2">Modifier Utilisateur</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data-list">
+      <form *ngIf="user">
+        <div class="row">
+
+          <div class="col">
+            <div hidden>
+              <label for="id">ID</label>
+              <input type="number" [(ngModel)]="user.id" name="id" class="form-control" value="{{ user.id }}">
+            </div>
+            <div>
+              <label for="firstName">Nom</label>
+              <input type="text" [(ngModel)]="user.firstName" name="firstName" class="form-control"
+                value="{{ user.firstName }}">
+            </div>
+            <div>
+              <label for="lastName">Prénom</label>
+              <input type="text" [(ngModel)]="user.lastName" name="lastName" class="form-control"
+                value="{{ user.lastName }}">
+            </div>
+            <div>
+              <label for="website">Site web</label>
+              <input type="website" [(ngModel)]="user.website" name="website" class="form-control"
+                value="{{ user.website }}">
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label for="email">Email</label>
+              <input type="email" [(ngModel)]="user.email" name="email" class="form-control" value="{{ user.email }}">
+            </div>
+            <div>
+              <label for="password">Mot De Passe</label>
+              <input type="password" [(ngModel)]="user.password" name="password" class="form-control"
+                value="{{ user.password }}">
+            </div>
+            <div>
+              <label for="username">Username</label>
+              <input type="username" [(ngModel)]="user.username" name="username" class="form-control"
+                value="{{ user.username }}">
+            </div>
+          </div>
+          <div class="col-3">
+            <label class="example-margin">Etat De Profil:</label>
+            <input [(ngModel)]="status" type="radio" value="true" name="etat">
+            <label>Activer</label>
+            <input [(ngModel)]="status" type="radio" value="false" name="etat">
+            <label>Désactiver</label>
+          </div>
+        </div>
+
+        <div>
+          <label for="biography">Biography</label>
+          <textarea name="biography" id="" cols="30" class="form-control" rows="7" [(ngModel)]="user.biography"
+            value="{{ user.biography }}"></textarea>
+        </div>
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" type="submit" (click)="updateUser()">Modifier</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

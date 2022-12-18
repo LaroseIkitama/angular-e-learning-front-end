@@ -25,7 +25,9 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio'
 
 
 
@@ -54,7 +56,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatTreeModule,
     MatSelectModule,
     MatProgressBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCheckboxModule,
+    MatRadioModule
   ]
 })
 

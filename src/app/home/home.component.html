@@ -4,6 +4,7 @@
 <div *ngFor="let course of courses">
   <mat-card class="mat-elevation-z8">
     <div id="image">
+      <img *ngIf="course.category.id==1" src="assets/images/data.jpg" alt="image du cours">
       <img *ngIf="course.category.id==2" src="assets/images/development.jpg" alt="image du cours">
       <img *ngIf="course.category.id==3" src="assets/images/securité.jpg" alt="image du cours">
     </div>

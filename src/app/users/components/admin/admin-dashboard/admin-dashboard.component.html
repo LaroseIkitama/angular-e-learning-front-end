@@ -2,25 +2,29 @@
   <div class="page__box p-3 mt-2">Dashboard</div>
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data-list">
-      <div class="dashboard_content">
-        <mat-card class="mat-elevation-z8">
+      <div class="statistique">
+        <mat-card class="mat-elevation-z8 first">
           <mat-card-header>
             <mat-card-title>Total cours</mat-card-title>
           </mat-card-header>
-          <mat-card-content>17</mat-card-content>
-          <mat-card-actions align="end"><mat-icon>library_books</mat-icon></mat-card-actions>
+          <mat-card-content>{{ totalCourse }}</mat-card-content>
         </mat-card>
+        <mat-card class="mat-elevation-z8 second">
+          <mat-card-header>
+            <mat-card-title>Total Formateurs</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>{{ totalTrainer }}</mat-card-content>
+        </mat-card>
+
+        <mat-card class="mat-elevation-z8 third">
+          <mat-card-header>
+            <mat-card-title>Total Apprenants</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>{{ totalLearner }}</mat-card-content>
+        </mat-card>
+
       </div>
 
-      <div class="dashboard_content">
-        <mat-card class="mat-elevation-z8">
-          <mat-card-header>
-            <mat-card-title>Total apprenants</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>20</mat-card-content>
-          <mat-card-actions align="end"><mat-icon>people</mat-icon></mat-card-actions>
-        </mat-card>
-      </div>
     </div>
   </div>
 </div>

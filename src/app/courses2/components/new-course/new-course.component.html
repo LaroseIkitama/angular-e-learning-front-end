@@ -5,7 +5,7 @@
       <div class="stepper_content">
         <!-- formulary -->
       <form [formGroup]="courseForm">
-        <mat-horizontal-stepper labelPosition="bottom" #stepper>
+        <mat-horizontal-stepper labelPosition="bottom" #stepper linear>
           <!-- step-1 -->
           <mat-step formGroupName="information" [stepControl]="courseForm.get('information')!">
             <ng-template matStepLabel>Introduction</ng-template>

@@ -1,6 +1,6 @@
 <div id="body">
   <div id="Alert" class="alert alert-danger" *ngIf="error==1">
-    <strong>Nom d'utilisateur ou mot de passe incorrect</strong>
+    <strong>Confirmation de mot de passe incorrect</strong>
   </div>
 
   <div class="login_form">
@@ -9,28 +9,28 @@
       <hr>
       <p>Créer un compte</p>
 
-      <div class="form-group">
+      <div >
         <label for="username">
           <mat-icon>perm_identity</mat-icon> Nom d'utilisateur
         </label>
-        <input type="text" placeholder="Entrer le nom d'utilisateur" [(ngModel)]="user.username" id="username" name="username"
+        <input type="text" placeholder="Entrer le nom d'utilisateur" [(ngModel)]="user.username"  id="username" name="username"
           class="form-control">
       </div>
-      <div class="form-group">
+      <div >
         <label for="password">
           <mat-icon> vpn_key</mat-icon> Mot de passe
         </label>
-        <input type="password" placeholder="Entrer le mot de passe" [(ngModel)]="user.password" id="password"
+        <input type="password" placeholder="Entrer le mot de passe" [(ngModel)]="user.password"  id="password"
           name="password" class="form-control">
 
-          <input type="password" placeholder="Valider le mot de passe" [(ngModel)]="user.password" id="password"
+          <input type="password" placeholder="Valider le mot de passe" [(ngModel)]="user.firstName" id="password"
             name="password" class="form-control">
       </div>
       <div class="button-group">
         <button type="submit" (click)="onLogIn()">Créer le compte</button>
       </div>
       <div class="password_forget">
-        <a href="">Vous avez déja un cpmpte?</a>
+        <a href="/login">Vous avez déja un compte?</a>
       </div>
     </form>
   </div>

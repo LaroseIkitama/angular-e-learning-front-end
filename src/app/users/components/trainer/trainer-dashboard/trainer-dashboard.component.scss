@@ -19,9 +19,16 @@
   }
 }
 
+.statistique {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .mat-card {
   text-align: center;
-  margin-top: 70px;
+  width: 60%;
+  margin: 5px;
 
   .mat-card-title {
     font-size: 30px;
@@ -31,4 +38,22 @@
   .mat-card-content {
     font-size: 20px;
   }
+}
+
+.first {
+  background-color: #0f172a;
+  color: #fff;
+}
+
+.second {
+  margin-top: 130px;
+  background-color: #0EA4E4;
+  color: #fff;
+
+}
+
+.third {
+  margin-top: 230px;
+  background-color: #044d21;
+  color: #fff;
 }

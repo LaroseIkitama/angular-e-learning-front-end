@@ -18,10 +18,8 @@ export class LoginComponent implements OnInit {
   }
 
   onLogIn() {
-    console.log(this.user);
     let isValidUser: Boolean = this.authService.SignIn(this.user);
     if (isValidUser) {
-      /* this.router.navigate(['/login']); */
       if (this.authService.loggedUser == this.user.username) {
         console.log('ok jazz');
         if (this.authService.isAdmin())
@@ -30,7 +28,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         if (this.authService.isTrainer())
           this.router.navigate(['/trainer-dashboard']);
-        /* this.router.navigate([`./admin/${this.user.username}`]); */
       }
     }
     else {

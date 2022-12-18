@@ -1,1 +1,79 @@
-<p>new-trainer works!</p>
+<div class="container-fluid page">
+  <div class="page__box p-3 mt-2">Créer une formateur</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data-list">
+      <div class="form-card">
+        <form [formGroup]="userForm">
+          <div class="row">
+            <div class="col">
+              <!-- ID -->
+              <mat-form-field appearance="outline" hidden>
+                <mat-label>ID</mat-label>
+                <input matInput type="number" formControlName="id">
+              </mat-form-field>
+              <!-- FirstName -->
+              <mat-form-field appearance="outline">
+                <mat-label>Nom</mat-label>
+                <input matInput type="text" formControlName="firstName">
+              </mat-form-field>
+              <!-- Last Name -->
+              <mat-form-field appearance="outline">
+                <mat-label>Prénom</mat-label>
+                <input matInput type="text" formControlName="lastName">
+              </mat-form-field>
+              <!--Username-->
+              <mat-form-field appearance="outline">
+                <mat-label>Nom d'Utilisateur</mat-label>
+                <input matInput type="text" formControlName="username">
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <!-- Email -->
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+              </mat-form-field>
+              <!-- Password -->
+              <mat-form-field appearance="outline">
+                <mat-label>Mot De Passe</mat-label>
+                <input matInput type="password" formControlName="password">
+              </mat-form-field>
+              <!-- Confirm Password -->
+              <mat-form-field appearance="outline">
+                <mat-label>Confirmer Mot De Passe</mat-label>
+                <input matInput type="password" formControlName="confirmPassword">
+              </mat-form-field>
+
+              <!-- role -->
+              <mat-form-field appearance="outline" hidden>
+                <mat-label>Site web</mat-label>
+                <input matInput type="text" formControlName="role">
+              </mat-form-field>
+              <!-- enabled -->
+              <mat-form-field appearance="outline" hidden>
+                <mat-label>enabled</mat-label>
+                <input matInput type="text" formControlName="enabled">
+              </mat-form-field>
+            </div>
+          </div>
+          <!-- Website -->
+          <mat-form-field appearance="outline">
+            <mat-label>Site web</mat-label>
+            <input matInput type="text" formControlName="website">
+          </mat-form-field>
+          <!-- Biography -->
+          <mat-form-field appearance="outline">
+            <mat-label>Biographie</mat-label>
+            <textarea matInput formControlName="biography" cols="30" rows="10"></textarea>
+          </mat-form-field>
+          <div class="action-buttons">
+            <button mat-raised-button color="warn" type="reset">Supprimer</button>
+            <button mat-raised-button color="primary" type="submit" (click)="onSubmitForm()"
+              [disabled]="userForm.invalid">Enregister</button>
+          </div>
+        </form>
+      </div>
+      <!-- end -->
+    </div>
+  </div>
+</div>

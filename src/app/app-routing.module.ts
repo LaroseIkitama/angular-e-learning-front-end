@@ -23,6 +23,8 @@ import { TrainerListComponent } from './users/components/trainer/trainer-list/tr
 import { NewTrainerComponent } from './users/components/trainer/new-trainer/new-trainer.component';
 import { UpdateCourseComponent } from './courses2/components/update-course/update-course.component';
 import { ParametersComponent } from './users/components/admin/parameters/parameters.component';
+import { UpdateTrainerComponent } from './users/components/trainer/update-trainer/update-trainer.component';
+import { ReviewsComponent } from './courses2/components/reviews/reviews.component';
 
 const routes: Routes = [
   { path: 'new-course', component: NewCourseComponent },
@@ -45,15 +47,20 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
 
   { path: 'trainer-dashboard', component: TrainerDashboardComponent },
+  { path: 'trainer-parameters', component: ParametersComponent },
   { path: 'trainer-list', component: TrainerListComponent },
   { path: 'new-trainer', component: NewTrainerComponent },
-  { path: 'update-trainer/:id', component: NewTrainerComponent },
+  { path: 'update-trainer/:id', component: UpdateTrainerComponent },
 
 
   { path: 'learner-dashboard', component: LearnerDashboardComponent },
+  { path: 'certificate', component: CertificateComponent },
+  { path: 'reviews', component: ReviewsComponent },
+
+
 
   { path: 'admin-dashboard', component: AdminDashboardComponent },
-  { path: 'admin-parameters', component: ParametersComponent },
+  { path: 'parameters', component: ParametersComponent },
 
 
   { path: 'certificate', component: CertificateComponent },

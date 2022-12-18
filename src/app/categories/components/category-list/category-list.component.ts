@@ -47,7 +47,7 @@ export class CategoryListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.data[0].confirmed) {
-          this.categoriesService.deleteCategory(category.id).subscribe(() => {  window.location.reload();});
+          this.categoriesService.deleteCategory(category.id).subscribe(() => {  /* window.location.reload(); */});
         }
       }
     });

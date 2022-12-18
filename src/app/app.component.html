@@ -20,6 +20,16 @@
           <a class="nav-link active" aria-current="page" href="/admin-dashboard"
             routerLinkActive="list-item-active">Dashboard</a>
         </li>
+        <li class="nav-item" *ngIf="authService.isLearner()">
+          <a class="nav-link active" aria-current="page" href="/learner-dashboard"
+            routerLinkActive="list-item-active">Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="authService.isTrainer()">
+          <a class="nav-link active" aria-current="page" href="/reviews" routerLinkActive="list-item-active">Revues</a>
+        </li>
+        <li class="nav-item" *ngIf="authService.isAdmin() ">
+          <a class="nav-link active" aria-current="page" href="/reviews" routerLinkActive="list-item-active">Revues</a>
+        </li>
         <li class="nav-item dropdown" *ngIf="authService.isAdmin()">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categories
@@ -29,16 +39,6 @@
             <li><a class="dropdown-item" routerLink="/category-list" routerLinkActive="list-item-active">Lister</a></li>
           </ul>
         </li>
-        <!-- <li class="nav-item dropdown" *ngIf="authService.isTrainer()">
-          <a class="nav-link dropdown-toggle" href="" routerLinkActive="list-item-active" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Sections
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/new-section" routerLinkActive="list-item-active">Ajouter</a></li>
-            <li><a class="dropdown-item" routerLink="/section-list" routerLinkActive="list-item-active">Lister</a></li>
-          </ul>
-        </li> -->
         <li class="nav-item dropdown" *ngIf="authService.isTrainer()">
           <a class="nav-link dropdown-toggle" href="" routerLinkActive="list-item-active" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
@@ -92,7 +92,17 @@
                 </a>
               </li>
               <li *ngIf="authService.isAdmin()">
-                <a class="dropdown-item" routerLink="/admin-parameters" routerLinkActive="list-item-active">
+                <a class="dropdown-item" routerLink="/parameters" routerLinkActive="list-item-active">
+                  Paramètres
+                </a>
+              </li>
+              <li *ngIf="authService.isTrainer()">
+                <a class="dropdown-item" routerLink="/parameters" routerLinkActive="list-item-active">
+                  Paramètres
+                </a>
+              </li>
+              <li *ngIf="authService.isLearner()">
+                <a class="dropdown-item" routerLink="/parameters" routerLinkActive="list-item-active">
                   Paramètres
                 </a>
               </li>
@@ -105,25 +115,6 @@
                 <a class="dropdown-item" routerLink="/login" routerLinkActive="list-item-active">Se connecter</a>
               </li>
             </ul>
-
-            <!-- <ul class="dropdown-menu">
-              <li *ngIf="authService.setLoggedUser()">
-                <a class="dropdown-item" (click)="onLogout()" routerLinkActive="list-item-active">
-                  Se déconnecter
-                </a>
-              </li>
-              <li *ngIf="authService.setLoggedUser()">
-                <a class="dropdown-item" routerLink="/parameters" routerLinkActive="list-item-active">
-                  Paramètres
-                </a>
-              </li>
-              <li *ngIf="!authService.setLoggedUser()">
-                <a class="dropdown-item" routerLink="/logout" routerLinkActive="list-item-active">Creer compte</a>
-              </li>
-              <li *ngIf="!authService.setLoggedUser()">
-                <a class="dropdown-item" routerLink="/login" routerLinkActive="list-item-active">Se connecter</a>
-              </li>
-            </ul> -->
           </li>
         </ul>
       </div>

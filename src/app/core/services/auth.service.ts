@@ -18,7 +18,6 @@ export class AuthService {
 
   constructor(private router: Router, private usersService: UsersService) {
     this.usersService.getUsers().subscribe((users) => this.users = users);
-    console.log("username : ", this.loggedUser, " loogin :", this.isloggedIn);
   }
 
   logout() {
@@ -82,7 +81,7 @@ export class AuthService {
     let response!: boolean;
     if (!localStorage.getItem('role')) //localStorage.getItem('role')== undefiened
       response = false;
-    if (localStorage.getItem('role') === "TRAINER")
+    if (localStorage.getItem('role') === "FORMATEUR")
       response = true;
 
     return response;
@@ -91,7 +90,7 @@ export class AuthService {
     let response!: boolean;
     if (!localStorage.getItem('role')) //localStorage.getItem('role')== undefiened
       response = false;
-    if (localStorage.getItem('role') === "LEARNER")
+    if (localStorage.getItem('role') === "APPRENANT")
       response = true;
 
     return response;

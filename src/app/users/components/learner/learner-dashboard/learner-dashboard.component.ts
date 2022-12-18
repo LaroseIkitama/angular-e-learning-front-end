@@ -62,4 +62,7 @@ export class LearnerDashboardComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  openPDF() {
+   this.router.navigate(['/certificate']);
+  }
 }

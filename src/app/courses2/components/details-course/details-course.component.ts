@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Chapter } from 'src/app/core/models/chapter.model';
 import { Course } from 'src/app/core/models/course.model';
 import { Section } from 'src/app/core/models/section.model';
+import { User } from 'src/app/core/models/user.model';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { ChaptersServices } from 'src/app/core/services/chapters.services';
 import { CoursesService } from 'src/app/core/services/courses.service';
 import { SectionsService } from 'src/app/core/services/sections.service';
@@ -20,19 +22,29 @@ export class DetailsCourseComponent implements OnInit {
   chapters!: Chapter[];
 
   /* Ici 22h */
-  course:Course|undefined;
+  course: Course | undefined;
+
+  userConnect = new User();
+  currentUser = new User();
+
+  verifyIfConnect!: any;
 
   constructor(private activateRoute: ActivatedRoute,
     private coursesService: CoursesService,
     private sectionsService: SectionsService,
     private chaptersService: ChaptersServices,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService) {
+    this.userConnect = this.authService.setUserLoggedData();
+    this.verifyIfConnect = this.authService.setLoggedUser();
+    console.log(this.verifyIfConnect);
+  }
 
   ngOnInit(): void {
-    const courseId:string | null = this.activateRoute.snapshot.paramMap.get('id');
-    if(courseId){
-      this.coursesService.getCourse(+courseId).subscribe((course)=>{
-        this.course=course;
+    const courseId: string | null = this.activateRoute.snapshot.paramMap.get('id');
+    if (courseId) {
+      this.coursesService.getCourse(+courseId).subscribe((course) => {
+        this.course = course;
       });
     }
     // this.coursesService.getCourse(this.activateRoute.snapshot.params['id']).subscribe(course => {
@@ -53,7 +65,11 @@ export class DetailsCourseComponent implements OnInit {
     this.router.navigate([`comments-course/${id}`]);
   }
   takeCourse(id: number) {
-    this.router.navigate([`take-course/${id}`]);
+    if (this.verifyIfConnect != false) {
+      this.router.navigate([`take-course/${id}`]);
+    } else {
+      this.router.navigate(['/logout']);
+    }
   }
 
 }

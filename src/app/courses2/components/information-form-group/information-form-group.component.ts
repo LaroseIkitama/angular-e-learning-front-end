@@ -47,11 +47,11 @@ export class InformationFormGroupComponent implements OnInit {
     this.form.get('information')!.get('duration')!.markAllAsTouched();
     this.form.get('information')!.get('duration')!.updateValueAndValidity();
 
-    this.form.get('information')!.get('userId')!.markAllAsTouched();
-    this.form.get('information')!.get('userId')!.updateValueAndValidity();
+    this.form.get('information')!.get('user')!.markAllAsTouched();
+    this.form.get('information')!.get('user')!.updateValueAndValidity();
 
-    this.form.get('information')!.get('categoryId')!.markAllAsTouched();
-    this.form.get('information')!.get('categoryId')!.updateValueAndValidity();
+    this.form.get('information')!.get('category')!.markAllAsTouched();
+    this.form.get('information')!.get('category')!.updateValueAndValidity();
 
     this.form.get('information')!.get('status')!.markAllAsTouched();
     this.form.get('information')!.get('status')!.updateValueAndValidity();

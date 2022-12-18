@@ -39,37 +39,60 @@ export class PublishFormGroupComponent implements OnInit {
 
   }
   save() {
+    // /* course parameters */
+    this.newCourse.id = this.form.value.information.id;
+    this.newCourse.title = this.form.value.information.title;
+    this.newCourse.description = this.form.value.information.description;
+    this.newCourse.image = this.form.value.media.image;
+    this.newCourse.video = this.form.value.media.video;
+    this.newCourse.duration = this.form.value.information.duration;
+    this.newCourse.level = this.form.value.information.level;
+    this.newCourse.status = this.form.value.information.status;
+    this.newCourse.user = this.form.value.information.user;
+    this.newCourse.category = this.form.value.information.category;
 
-    console.log("Tout les cours");
-    this.coursesService.getCourses().subscribe(courses => { console.log(courses) });
+    /* console.log("J'observe");
+    console.log(this.newCourse); */
+    // Create course
+    this.coursesService.createCourse(this.newCourse).subscribe(() => { });
+    this.coursesService.getCourses().subscribe(
+      (course) => {
+        this.courses = course;
+      });
 
-    if (this.courses.length == 0) {
-      console.log("Aucun cours dans la base de donnees");
-
-      // /* course parameters */
-      this.newCourse.id = this.form.value.information.id;
-      this.newCourse.title = this.form.value.information.title;
-      this.newCourse.description = this.form.value.information.description;
-      this.newCourse.image = this.form.value.media.image;
-      this.newCourse.video = this.form.value.media.video;
-      this.newCourse.duration = this.form.value.information.duration;
-      this.newCourse.level = this.form.value.information.level;
-      this.newCourse.status = this.form.value.information.status;
-      this.newCourse.user = this.form.value.information.user;
-      this.newCourse.category = this.form.value.information.category;
-      // Create course
-      this.coursesService.createCourse(this.newCourse).subscribe(() => { });
-
-      this.newSection.id=this.form.value.content[0].section.id;
-      this.newSection.title=this.form.value.content[0].section.title;
-      this.coursesService.getFirstCourse().subscribe(course => { this.newSection.course=course });
-      this.sectionsService.createSection(this.newSection).subscribe(()=>{});
-
-
-    } else {
-
-      console.log("Cours existe");
+    for (let course of this.courses) {
+      if (this.isSame(course.title, this.newCourse.title)===true) {
+        console.log(course.title, " = ", this.newCourse.title);
+        break
+      }
+      /* console.log(course.title);
+      if (course.title === "aye") { console.log("ok je marrete la"); break } */
+      /* if (course.user.id === this.newCourse.user.id) {
+        if (course.title === this.newCourse.title) {
+          console.log("User id recup");
+          console.log(this.newCourse.user.id);
+          console.log("Course id recup");
+          console.log(this.newCourse.title);
+        }
+      } */
     }
+
+    /*  this.coursesService.createCourse(this.newCourse).subscribe(() => { });
+
+     if (this.courses.length == 0) {
+       console.log("Aucun cours dans la base de donnees");
+
+
+       this.newSection.id = this.form.value.content[0].section.id;
+       this.newSection.title = this.form.value.content[0].section.title;
+       this.coursesService.getFirstCourse().subscribe(course => { this.newSection.course = course });
+       this.sectionsService.createSection(this.newSection).subscribe(() => { });
+
+
+     } else {
+
+       console.log("Cours existe");
+     } */
     // // this.newCourse.userId = this.form.value.information.userId;
     // this.coursesService.createCourse(this.newCourse).subscribe(()=>{
     //   });
@@ -99,6 +122,14 @@ export class PublishFormGroupComponent implements OnInit {
     //this.router.navigate(['/course-list']);
   }
 
+  isSame(s1: string, s2: string): boolean {
+    let response!: boolean;
+    if (s1.toUpperCase() === s2.toUpperCase())
+      response = true
+    if (s1.toUpperCase() !== s2.toUpperCase())
+      response = false;
+    return response;
+  }
   submit() {
     console.log('submit');
 

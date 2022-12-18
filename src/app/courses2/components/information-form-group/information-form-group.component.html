@@ -28,7 +28,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <!-- Category Id -->
+    <!-- Category -->
     <mat-form-field appearance="outline" formGroupName="information" class="formular_input">
       <mat-label>Catégorie</mat-label>
       <mat-select formControlName="category">
@@ -47,10 +47,10 @@
       <mat-label>status</mat-label>
       <input type="number" matInput formControlName="status">
     </mat-form-field>
-    <!-- UserId -->
+    <!-- User -->
     <mat-form-field appearance="outline" formGroupName="information" hidden>
       <mat-label>user</mat-label>
-      <input type="number" matInput formControlName="user">
+      <input  matInput formControlName="user">
     </mat-form-field>
     <div class="action-buttons">
       <button mat-raised-button color="primary" (click)="step1Submitted()" matStepperNext>Suivant</button>

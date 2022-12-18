@@ -71,7 +71,8 @@
           <ng-container matColumnDef="certificate">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Certificat</th>
             <td mat-cell *matCellDef="let row">
-              <mat-icon>school</mat-icon>
+
+              <button (click)="openPDF()"><mat-icon>school</mat-icon></button>
             </td>
           </ng-container>
 
